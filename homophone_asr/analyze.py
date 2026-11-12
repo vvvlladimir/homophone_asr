@@ -148,7 +148,7 @@ def aggregate(rows: list[dict], by: tuple[str, ...] = ("accent", "cfg_weight")):
     res["wer"] = res["errors"] / res["n_ref"].clip(lower=1)
     res["homophone_confusion_rate"] = res.pop("conf")
     res["target_accuracy"] = res.pop("acc")
-    res["other_error_rate"] = 1 - res["target_accuracy"] - res["homophone_confusion_rate"]
+    res["other_error_rate"] = (1 - res["target_accuracy"] - res["homophone_confusion_rate"]).clip(lower=0)
     return res.drop(columns=["errors", "n_ref"]).round(4)
 
 

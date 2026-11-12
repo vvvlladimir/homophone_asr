@@ -50,3 +50,40 @@ class MockASR:
                 continue  # simulated deletion
             out.append(tok)
         return " ".join(out)
+
+
+class FasterWhisperASR:
+    """faster-whisper with fixed decoding settings (beam size, temperature) for reproducibility."""
+
+    name = "faster_whisper"
+
+    def __init__(self, model: str = "small", device: str = "cpu", compute_type: str = "int8",
+                 language: str = "de", beam_size: int = 5, temperature: float = 0.0,
+                 condition_on_previous_text: bool = False, vad_filter: bool = False):
+        self.model_name, self.device, self.compute_type = model, device, compute_type
+        self.kw = dict(language=language, beam_size=beam_size, temperature=temperature,
+                       condition_on_previous_text=condition_on_previous_text, vad_filter=vad_filter)
+        self._model = None
+
+    def cache_params(self) -> dict:
+        return {"backend": "faster-whisper", "model": self.model_name, "compute_type": self.compute_type,
+                **self.kw}
+
+    def load(self):
+        if self._model is None:
+            from faster_whisper import WhisperModel
+            self._model = WhisperModel(self.model_name, device=self.device, compute_type=self.compute_type)
+        return self._model
+
+    def transcribe(self, audio_path):
+        segments, _ = self.load().transcribe(str(audio_path), **self.kw)
+        return " ".join(s.text.strip() for s in segments).strip()
+
+
+def make_asr(cfg: dict, partners: dict[str, list[str]] | None = None) -> ASRBackend:
+    if cfg["backends"]["asr"] == "mock":
+        return MockASR(partners, cfg.get("seed", 0))
+    a = cfg["asr"]
+    return FasterWhisperASR(a.get("model", "small"), a.get("device", "cpu"), a.get("compute_type", "int8"),
+                            a.get("language", "de"), a.get("beam_size", 5), a.get("temperature", 0.0),
+                            a.get("condition_on_previous_text", False), a.get("vad_filter", False))

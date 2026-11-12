@@ -8,11 +8,11 @@ version = "0.1.0"
 description = "German homophone stress test for ASR with synthetic L1-style accents"
 requires-python = ">=3.10,<3.13"
 dependencies = [
-  "pyyaml", "numpy", "pandas", "jiwer>=3.0", "soundfile", "matplotlib", "phonemizer",
+  "pyyaml", "numpy", "pandas", "jiwer>=3.0", "soundfile", "matplotlib", "phonemizer", "tabulate",
 ]
 
 [project.optional-dependencies]
-real = ["chatterbox-tts==0.1.7", "faster-whisper>=1.1", "transformers", "torch", "datasets", "huggingface_hub"]
+real = ["chatterbox-tts==0.1.7", "faster-whisper>=1.1", "transformers", "torch", "datasets", "huggingface_hub", "pyarrow<18", "setuptools<81"]
 ui = ["gradio"]
 dev = ["pytest"]
 

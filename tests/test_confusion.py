@@ -64,3 +64,9 @@ def test_read_words_ignores_comments(tmp_path):
     p = tmp_path / "w.txt"
     p.write_text("# c\nmehr\n\nMeer # x\n", encoding="utf-8")
     assert read_words(p) == ["mehr", "Meer"]
+
+
+def test_build_groups_order_independent():
+    a = build_groups(["Mehr", "mehr", "Meer", "mehr"], MockG2P())
+    b = build_groups(["Meer", "mehr", "Mehr", "mehr"], MockG2P())
+    assert [g.words for g in a] == [g.words for g in b] == [["Meer", "mehr"]]

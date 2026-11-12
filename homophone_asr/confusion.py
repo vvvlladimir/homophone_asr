@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import csv
 import re
+from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Iterable, Protocol
@@ -73,12 +74,14 @@ def build_groups(words: Iterable[str], g2p: G2P) -> list[HomophoneGroup]:
 
     Only groups with >= 2 distinct lower-cased spellings are returned (sorted, deterministic).
     """
-    uniq: dict[str, str] = {}
+    variants: dict[str, Counter] = {}
     for w in words:
         w = w.strip()
-        if w and w.lower() not in uniq:
-            uniq[w.lower()] = w
-    forms = sorted(uniq.values(), key=lambda s: (s.lower(), s))
+        if w:
+            variants.setdefault(w.lower(), Counter())[w] += 1
+    # representative spelling: most frequent variant, ties -> sorted min (input-order independent)
+    forms = sorted((min(c, key=lambda s: (-c[s], s)) for c in variants.values()),
+                   key=lambda s: (s.lower(), s))
     by_ipa: dict[str, list[str]] = {}
     for w, ipa in zip(forms, g2p.phonemize(forms)):
         if ipa:

@@ -56,3 +56,62 @@ def decode_mock_audio(path: str | Path) -> dict | None:
         return None
     n = int(data[4])
     return json.loads(bytes(int(x) for x in data[5:5 + n]).decode("utf-8"))
+
+
+class ChatterboxTTS:
+    """Chatterbox Multilingual (MIT). German text; accent from a foreign-language reference clip."""
+
+    name = "chatterbox"
+
+    def __init__(self, device: str = "cpu", language_id: str = "de", exaggeration: float = 0.5,
+                 temperature: float = 0.8, seed: int = 1234):
+        self.device, self.language_id = device, language_id
+        self.exaggeration, self.temperature, self.seed = exaggeration, temperature, seed
+        self._model = None
+        self._builtin = None
+        self._conds: dict[str, object] = {}
+
+    def cache_params(self) -> dict:
+        try:
+            from importlib.metadata import version
+            v = version("chatterbox-tts")
+        except Exception:
+            v = "unknown"
+        return {"backend": "chatterbox-mtl", "version": v, "lang": self.language_id,
+                "exaggeration": self.exaggeration, "temperature": self.temperature, "seed": self.seed}
+
+    def load(self):
+        if self._model is None:
+            import torch
+            from chatterbox.mtl_tts import ChatterboxMultilingualTTS
+            torch.set_num_threads(max(1, torch.get_num_threads()))
+            self._model = ChatterboxMultilingualTTS.from_pretrained(device=self.device)
+            self._builtin = self._model.conds  # prepare_conditionals() replaces, never mutates
+        return self._model
+
+    def synthesize(self, text, out_path, accent, ref_path, cfg_weight):
+        import random
+
+        import torch
+        m = self.load()
+        if ref_path:
+            if ref_path not in self._conds:
+                m.prepare_conditionals(ref_path, exaggeration=self.exaggeration)
+                self._conds[ref_path] = m.conds
+            m.conds = self._conds[ref_path]
+        else:
+            m.conds = self._builtin
+        torch.manual_seed(self.seed)
+        random.seed(self.seed)
+        np.random.seed(self.seed)
+        wav = m.generate(text, language_id=self.language_id, exaggeration=self.exaggeration,
+                         cfg_weight=float(cfg_weight), temperature=self.temperature)
+        sf.write(str(out_path), wav.squeeze(0).cpu().numpy(), m.sr, subtype="PCM_16")
+
+
+def make_tts(cfg: dict) -> TTSBackend:
+    if cfg["backends"]["tts"] == "mock":
+        return MockTTS(cfg.get("seed", 0))
+    t = cfg["tts"]
+    return ChatterboxTTS(t.get("device", "cpu"), t.get("language_id", "de"), t.get("exaggeration", 0.5),
+                         t.get("temperature", 0.8), cfg.get("seed", 1234))
