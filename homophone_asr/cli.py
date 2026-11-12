@@ -122,6 +122,20 @@ def cmd_detect(args) -> int:
     return 0
 
 
+def cmd_detect_eval(args) -> int:
+    from .detector import evaluate_detector
+    cfg = _cfg(args)
+    if args.threshold is not None:
+        cfg["detector"]["threshold"] = args.threshold
+    p = _pipeline(cfg)
+    e = evaluate_detector(p.detector, p.sentences)
+    for r in e["rows"]:
+        if not r["correct"]:
+            print(f"MISS {r['kind']:8s} {r['text']!r} best={r['best']} margin={r['margin']:+.2f}")
+    print(json.dumps({k: v for k, v in e.items() if k != "rows"}, indent=1))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     ap = argparse.ArgumentParser(prog="homophone-asr", description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -161,6 +175,9 @@ def build_parser() -> argparse.ArgumentParser:
     d.add_argument("text")
     d.add_argument("--threshold", type=float, default=None)
     d.set_defaults(fn=cmd_detect)
+    e = sub.add_parser("detect-eval", help="evaluate detector: originals vs. target->partner swaps")
+    e.add_argument("--threshold", type=float, default=None)
+    e.set_defaults(fn=cmd_detect_eval)
     return ap
 
 
