@@ -44,8 +44,11 @@ class Pipeline:
 
     def synthesize(self, text: str, accent: str, cfg_weight: float) -> dict:
         ref, warning = self.ref_for(accent)
-        key = content_hash({"text": text, "ref": file_hash(ref) if ref else None,
-                            "cfg_weight": round(float(cfg_weight), 3), "tts": self.tts.cache_params()})
+        kd = {"text": text, "ref": file_hash(ref) if ref else None,
+              "cfg_weight": round(float(cfg_weight), 3), "tts": self.tts.cache_params()}
+        if ref is None:
+            kd["accent"] = accent   # no ref: output may still depend on the label (e.g. MockTTS)
+        key = content_hash(kd)
         path = self.cache.path("audio", key, "wav")
         cached = path.exists() and self.cache.enabled
         if not cached:
@@ -103,8 +106,8 @@ class Pipeline:
         pids = list(dict.fromkeys(r["pair_id"] for r in self.sentences))
         if pair_ids:
             pids = [p for p in pids if p in set(pair_ids)]
-        if limit_pairs:
-            pids = pids[:limit_pairs]
+        if limit_pairs is not None:
+            pids = pids[:max(0, limit_pairs)]
         return [r for r in self.sentences if r["pair_id"] in set(pids)]
 
     def run_experiment(self, accents: list[str], cfg_weights: list[float], rows: list[dict] | None = None,

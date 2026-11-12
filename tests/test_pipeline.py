@@ -84,3 +84,24 @@ def test_cli_run_mock(tmp_path, capsys, monkeypatch):
 def test_cli_rejects_bad_cfg():
     with pytest.raises(SystemExit):
         cli.main(["--mock", "run", "--cfg", "0,2"])
+
+
+def test_no_ref_accents_do_not_share_cache(pipe):
+    a = pipe.synthesize("Hallo Welt.", "tr", 0.5)
+    b = pipe.synthesize("Hallo Welt.", "ru", 0.5)
+    assert a["audio_path"] != b["audio_path"]
+
+
+def test_cli_validation_errors(capsys):
+    for argv in (["--mock", "try", "x", "--cfg", "1.5"], ["--mock", "run", "--accents", ""],
+                 ["--mock", "run", "--cfg", ""], ["--mock", "run", "--limit-pairs", "0"]):
+        with pytest.raises(SystemExit):
+            cli.main(argv)
+    assert cli.main(["--config", "/nonexistent.yaml", "groups"]) == 2
+
+
+def test_bad_backend_rejected(cfg):
+    from homophone_asr.config import validate
+    cfg["backends"]["tts"] = "mok"
+    with pytest.raises(ValueError):
+        validate(cfg)

@@ -17,16 +17,35 @@ import time
 from .config import load_config, mock_overrides
 
 
+def _cfg_weight(x: str) -> float:
+    try:
+        v = float(x)
+    except ValueError:
+        raise argparse.ArgumentTypeError(f"not a number: {x!r}")
+    if not 0.0 <= v <= 1.0:
+        raise argparse.ArgumentTypeError(f"cfg weight {v} outside [0, 1]")
+    return v
+
+
 def _floats(s: str) -> list[float]:
-    vals = [float(x) for x in s.split(",") if x.strip()]
-    for v in vals:
-        if not 0.0 <= v <= 1.0:
-            raise argparse.ArgumentTypeError(f"cfg weight {v} outside [0, 1]")
+    vals = [_cfg_weight(x) for x in s.split(",") if x.strip()]
+    if not vals:
+        raise argparse.ArgumentTypeError("empty list")
     return vals
 
 
 def _list(s: str) -> list[str]:
-    return [x.strip() for x in s.split(",") if x.strip()]
+    vals = [x.strip() for x in s.split(",") if x.strip()]
+    if not vals:
+        raise argparse.ArgumentTypeError("empty list")
+    return vals
+
+
+def _pos_int(x: str) -> int:
+    v = int(x)
+    if v < 1:
+        raise argparse.ArgumentTypeError("must be >= 1")
+    return v
 
 
 def _cfg(args) -> dict:
@@ -58,8 +77,11 @@ def cmd_run(args) -> int:
     from .pipeline import save_results
     cfg = _cfg(args)
     p = _pipeline(cfg)
-    rows = p.select(_list(args.pair_ids) if args.pair_ids else None, args.limit_pairs)
-    accents = _list(args.accents) if args.accents else cfg["experiment"]["accents"]
+    rows = p.select(args.pair_ids, args.limit_pairs)
+    if not rows:
+        print(f"error: no sentences selected (pair ids: {args.pair_ids})", file=sys.stderr)
+        return 2
+    accents = args.accents if args.accents is not None else cfg["experiment"]["accents"]
     cfgs = args.cfg if args.cfg is not None else cfg["experiment"]["cfg_weights"]
     for a in accents:
         if p.ref_for(a)[1]:
@@ -80,7 +102,7 @@ def cmd_run(args) -> int:
 def cmd_groups(args) -> int:
     from .confusion import Lexicon, build_groups, load_lexicon, make_g2p
     cfg = _cfg(args)
-    lex = Lexicon(build_groups(_list(args.words), make_g2p(cfg))) if args.words else load_lexicon(cfg)
+    lex = Lexicon(build_groups(args.words, make_g2p(cfg))) if args.words else load_lexicon(cfg)
     for g in lex.groups:
         print(f"/{g.ipa}/\t" + " | ".join(g.words))
     return 0
@@ -91,7 +113,7 @@ def cmd_fetch_refs(args) -> int:
     cfg = _cfg(args)
     cv = cfg["tts"]["common_voice"]
     rc = 0
-    for lang in _list(args.langs):
+    for lang in args.langs:
         try:
             print(lang, [str(x) for x in fetch_common_voice(lang, cfg["paths"]["refs_dir"], cv["repo"],
                                                             cv["split"], args.n)])
@@ -146,29 +168,29 @@ def build_parser() -> argparse.ArgumentParser:
 
     r = sub.add_parser("run", help="run the sentence set across accents x accent strengths")
     r.add_argument("--pairs", default=None, help="sentence CSV (default from config)")
-    r.add_argument("--accents", default=None, help="comma list of reference languages, e.g. tr,ru,en")
+    r.add_argument("--accents", type=_list, default=None, help="comma list of reference languages, e.g. tr,ru,en")
     r.add_argument("--cfg", type=_floats, default=None, help="comma list of cfg weights, e.g. 0,0.3,0.5")
     r.add_argument("--mode", choices=["sentences", "words", "both"], default="sentences")
-    r.add_argument("--limit-pairs", type=int, default=None)
-    r.add_argument("--pair-ids", default=None, help="comma list, e.g. p01,p02")
+    r.add_argument("--limit-pairs", type=_pos_int, default=None)
+    r.add_argument("--pair-ids", type=_list, default=None, help="comma list, e.g. p01,p02")
     r.add_argument("--asr-model", default=None, help="override asr.model (e.g. large-v3)")
     r.add_argument("--name", default=None, help="results sub-directory name")
     r.add_argument("--no-cache", action="store_true")
     r.set_defaults(fn=cmd_run)
 
     g = sub.add_parser("groups", help="print homophone groups (espeak-ng IPA)")
-    g.add_argument("--words", default=None, help="comma list; default: dataset + lexicon")
+    g.add_argument("--words", type=_list, default=None, help="comma list; default: dataset + lexicon")
     g.set_defaults(fn=cmd_groups)
 
     f = sub.add_parser("fetch-refs", help="download reference clips from Common Voice (CC0)")
-    f.add_argument("--langs", default="tr,ru,ar,en,de")
+    f.add_argument("--langs", type=_list, default=["tr", "ru", "ar", "en", "de"])
     f.add_argument("-n", type=int, default=1)
     f.set_defaults(fn=cmd_fetch_refs)
 
     t = sub.add_parser("try", help="synthesize + transcribe one sentence")
     t.add_argument("text")
     t.add_argument("--accent", default="tr")
-    t.add_argument("--cfg", type=float, default=0.5)
+    t.add_argument("--cfg", type=_cfg_weight, default=0.5)
     t.set_defaults(fn=cmd_try)
 
     d = sub.add_parser("detect", help="flag context-implausible homophones in text")
@@ -184,7 +206,11 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     logging.basicConfig(level=logging.INFO if args.verbose else logging.WARNING)
-    return args.fn(args)
+    try:
+        return args.fn(args)
+    except (FileNotFoundError, ValueError) as e:
+        print(f"error: {e}", file=sys.stderr)
+        return 2
 
 
 if __name__ == "__main__":

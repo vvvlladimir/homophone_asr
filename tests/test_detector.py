@@ -92,3 +92,27 @@ def test_gbert_real():
     det = HomophoneDetector(HFMaskedLM(), LEX, 2.0)
     f = [x for x in det.detect("Ich will Meer Wasser.") if x.word == "Meer"][0]
     assert f.flagged and f.best == "mehr"
+
+
+def test_allcaps_eszett_stays_distinct():
+    lex = Lexicon(build_groups(["Maß", "Mass"], MockG2P()))
+    if not lex.groups:  # MockG2P does not merge these; build the group by hand
+        from homophone_asr.confusion import HomophoneGroup
+        lex = Lexicon([HomophoneGroup("mas", ["Maß", "Mass"])])
+    lm = FixedLM({})
+    HomophoneDetector(lm, lex).detect("EIN MASS BIER")
+    assert len(set(lm.calls[0])) == 2 and "MAẞ" in lm.calls[0]
+
+
+def test_closing_quote_and_semicolon_not_sentence_start():
+    assert not _is_sentence_start('er sagte "ja" das', 14)
+    assert not _is_sentence_start("ich sehe; das", 10)
+    assert _is_sentence_start('Er sagte: "Das', 11)
+
+
+def test_evaluate_counts_originals_once():
+    lex = Lexicon(build_groups(["mehr", "Meer", "Rad", "Rat"], MockG2P()))
+    rows = [{"id": "1", "target": "Meer", "sentence": "Das Meer ist heute sehr ruhig."},
+            {"id": "2", "target": "Haus", "sentence": "Das Haus."}]
+    e = evaluate_detector(HomophoneDetector(MockLM(CORPUS), lex, 1.0), rows)
+    assert e["n_original"] == 1 and e["skipped"] == 1

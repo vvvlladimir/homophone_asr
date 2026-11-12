@@ -133,15 +133,15 @@ class Finding:
 
 def _match_case(word: str, like: str, sentence_start: bool) -> str:
     if like.isupper() and len(like) > 1:
-        return word.upper()
+        return word.replace("ß", "ẞ").upper()   # keep ß distinct from ss (Maß vs Mass)
     if sentence_start:
         return word[:1].upper() + word[1:]
     return word
 
 
 def _is_sentence_start(text: str, start: int) -> bool:
-    before = text[:start].rstrip()
-    return not before or before[-1] in ".!?:;\"„“«»"
+    before = text[:start].rstrip().rstrip("„“\"«»‚'(").rstrip()   # skip OPENING quotes/brackets
+    return not before or before[-1] in ".!?:"
 
 
 class HomophoneDetector:
@@ -160,7 +160,9 @@ class HomophoneDetector:
         part_forms = [_match_case(p, word, s0) for p in partners]
         cands = list(dict.fromkeys(orig_forms + part_forms))
         lp = self.lm.candidate_logprobs(text, (start, end), cands)
-        orig = max(lp[f] for f in orig_forms)               # original: best of its spellings
+        # original = best of {as written, canonical}; partners use canonical spelling only.
+        # Deliberately conservative: casing errors in ASR output alone never trigger a flag.
+        orig = max(lp[f] for f in orig_forms)
         part = {p: lp[f] for p, f in zip(partners, part_forms)}
         best = max(part, key=lambda k: (part[k], k))
         scores = {word: orig, **part}
@@ -196,35 +198,49 @@ class HomophoneDetector:
         return out
 
 
-def swap_target(sentence: str, target: str, replacement: str) -> str | None:
-    """Replace the first whole-word occurrence of target (case-insensitive), keeping sentence-start case."""
+def _find_word(sentence: str, target: str) -> tuple[int, int] | None:
     for mt in WORD_RE.finditer(sentence):
         if mt.group(0).lower() == target.lower():
-            rep = _match_case(replacement, mt.group(0), _is_sentence_start(sentence, mt.start()))
-            return sentence[:mt.start()] + rep + sentence[mt.end():]
+            return mt.start(), mt.end()
     return None
 
 
+def swap_target(sentence: str, target: str, replacement: str) -> str | None:
+    """Replace the first whole-word occurrence of target (case-insensitive), keeping sentence-start case."""
+    sp = _find_word(sentence, target)
+    if sp is None:
+        return None
+    rep = _match_case(replacement, sentence[sp[0]:sp[1]], _is_sentence_start(sentence, sp[0]))
+    return sentence[:sp[0]] + rep + sentence[sp[1]:]
+
+
 def evaluate_detector(det: HomophoneDetector, sentences: list[dict]) -> dict:
-    """Original sentences should NOT be flagged at the target; target->partner swaps SHOULD be,
-    with the original target suggested. Returns rates + per-item rows."""
-    rows = []
+    """Original sentences should NOT be flagged at the target (each counted once); every
+    target->partner swap SHOULD be flagged with the original target suggested.
+    The checked word is located by its character span, not by first match in detect()."""
+    rows, skipped = [], 0
     for r in sentences:
+        sp = _find_word(r["sentence"], r["target"])
+        if sp is None or not det.lexicon.partners(r["target"]):
+            skipped += 1
+            continue
+        items = [("original", r["sentence"], False)]
         for partner in det.lexicon.partners(r["target"]):
-            for kind, text, want in (("original", r["sentence"], False),
-                                     ("swapped", swap_target(r["sentence"], r["target"], partner), True)):
-                if text is None:
-                    continue
-                word = r["target"] if kind == "original" else partner
-                f = next((x for x in det.detect(text) if x.word.lower() == word.lower()), None)
-                if f is None:
-                    continue
-                ok_sugg = (not want) or f.best.lower() == r["target"].lower()
-                rows.append({"id": r["id"], "kind": kind, "text": text, "word": f.word, "best": f.best,
-                             "margin": round(f.margin, 3), "flagged": f.flagged,
-                             "correct": f.flagged == want and ok_sugg})
+            items.append(("swapped", swap_target(r["sentence"], r["target"], partner), True))
+        for kind, text, want in items:
+            # the swap keeps everything before the target, so the span start is unchanged
+            end = WORD_RE.match(text, sp[0]).end()
+            f = det.check(text, sp[0], end)
+            if f is None:
+                skipped += 1
+                continue
+            ok_sugg = (not want) or f.best.lower() == r["target"].lower()
+            rows.append({"id": r["id"], "kind": kind, "text": text, "word": f.word, "best": f.best,
+                         "margin": round(f.margin, 3), "flagged": f.flagged,
+                         "correct": f.flagged == want and ok_sugg})
     sw = [x for x in rows if x["kind"] == "swapped"]
     og = [x for x in rows if x["kind"] == "original"]
-    return {"detection_rate": sum(x["flagged"] and x["correct"] for x in sw) / max(len(sw), 1),
+    return {"detection_rate": sum(x["correct"] for x in sw) / max(len(sw), 1),
             "false_alarm_rate": sum(x["flagged"] for x in og) / max(len(og), 1),
-            "n_swapped": len(sw), "n_original": len(og), "threshold": det.threshold, "rows": rows}
+            "n_swapped": len(sw), "n_original": len(og), "skipped": skipped,
+            "threshold": det.threshold, "rows": rows}
