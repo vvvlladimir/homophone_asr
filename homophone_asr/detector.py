@@ -148,7 +148,7 @@ class HomophoneDetector:
     def __init__(self, lm: MaskedLM, lexicon, threshold: float = 2.0):
         self.lm, self.lexicon, self.threshold = lm, lexicon, float(threshold)
 
-    def check(self, text: str, start: int, end: int) -> Finding | None:
+    def check(self, text: str, start: int, end: int, threshold: float | None = None) -> Finding | None:
         word = text[start:end]
         partners = self.lexicon.partners(word)
         if not partners:
@@ -170,12 +170,13 @@ class HomophoneDetector:
         z = sum(math.exp(v - m) for v in scores.values())
         probs = {k: math.exp(v - m) / z for k, v in scores.items()}
         margin = part[best] - orig
-        return Finding(word, start, end, scores, probs, best, margin, margin >= self.threshold)
+        thr = self.threshold if threshold is None else float(threshold)
+        return Finding(word, start, end, scores, probs, best, margin, margin >= thr)
 
-    def detect(self, text: str) -> list[Finding]:
+    def detect(self, text: str, threshold: float | None = None) -> list[Finding]:
         out = []
         for mt in WORD_RE.finditer(text or ""):
-            f = self.check(text, mt.start(), mt.end())
+            f = self.check(text, mt.start(), mt.end(), threshold)
             if f:
                 out.append(f)
         return out

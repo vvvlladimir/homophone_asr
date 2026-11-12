@@ -133,7 +133,13 @@ def diff_spans(ops: list[dict] | list[Op], target_idx: int | None = None, status
             hom = status == HOMOPHONE and o["hyp"] == recognized
             out.append((f"[+{o['hyp']}]", "homophone" if hom else "ins"))
         out.append((" ", None))
-    return out[:-1] if out else out
+    merged: list[tuple[str, str | None]] = []
+    for text, lab in out[:-1]:
+        if lab is None and merged and merged[-1][1] is None:
+            merged[-1] = (merged[-1][0] + text, None)
+        else:
+            merged.append((text, lab))
+    return merged
 
 
 def aggregate(rows: list[dict], by: tuple[str, ...] = ("accent", "cfg_weight")):

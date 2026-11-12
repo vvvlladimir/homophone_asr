@@ -81,3 +81,8 @@ def test_aggregate_and_directions():
     assert agg.loc["tr", "wer"] == 0.125
     assert confusion_directions(rows) == {"meer → mehr": 1}
     assert aggregate([]).empty
+
+
+def test_diff_spans_keep_word_separators():
+    r = analyze_sentence("Die Katze schläft.", "Die Katze schläft.", "x", ["x"])
+    assert diff_spans(r["ops"]) == [("die katze schläft", None)]

@@ -99,7 +99,8 @@ def build_app(pipe: Pipeline) -> gr.Blocks:
     def try_it(text, accent, cfg_weight, progress=gr.Progress()):
         text = (text or "").strip()
         if not text:
-            raise gr.Error("Please type a German sentence.")
+            gr.Warning("Please type a German sentence.")
+            return None, "", [], "", [], "_Type a German sentence first._", None
         progress(0.1, desc="Synthesizing (≈25 s per new sentence on CPU; cached results are instant)…")
         r = pipe.run_sentence(text, accent, float(cfg_weight))
         notes = []
@@ -132,7 +133,9 @@ def build_app(pipe: Pipeline) -> gr.Blocks:
 
     def run_exp(accents, cfgs, pairs, mode, progress=gr.Progress()):
         if not accents or not cfgs or not pairs:
-            raise gr.Error("Select at least one accent, one strength and one pair.")
+            gr.Warning("Select at least one accent, one strength and one pair.")
+            return ("⚠️ _Select at least one accent, one strength and one pair – previous results kept._",
+                    *[gr.skip()] * 5)
         rows = pipe.select([pair_labels[p] for p in pairs])
         res = pipe.run_experiment(list(accents), sorted(float(c) for c in cfgs), rows, mode,
                                   lambda f, d: progress(f, desc=d))
@@ -168,9 +171,7 @@ def build_app(pipe: Pipeline) -> gr.Blocks:
     # ---- Detector
     def detect(text, threshold):
         text = text or ""
-        det = pipe.detector
-        det.threshold = float(threshold)
-        fs = det.detect(text)
+        fs = pipe.detector.detect(text, float(threshold))   # per-call threshold: no shared state
         table = pd.DataFrame([{"word": f.word, "flagged": f.flagged, "suggestion": f.best,
                                "margin (nats)": round(f.margin, 2),
                                "P(original)": round(f.probs[f.word], 3),
@@ -180,7 +181,7 @@ def build_app(pipe: Pipeline) -> gr.Blocks:
         else:
             n = sum(f.flagged for f in fs)
             msg = f"{len(fs)} homophone(s) checked, **{n} suspicious** (threshold {threshold:.1f} nats)."
-        return det.highlight(text, fs), table, msg
+        return pipe.detector.highlight(text, fs), table, msg
 
     with gr.Blocks(title="Homophone ASR stress test") as demo:
         gr.Markdown("# German homophones × synthetic accents × ASR\n"
@@ -239,7 +240,7 @@ def build_app(pipe: Pipeline) -> gr.Blocks:
             d_btn = gr.Button("Check homophones", variant="primary")
             gr.Examples([[t] for t in DETECT_EXAMPLES], inputs=[d_text])
             d_msg = gr.Markdown()
-            d_out = gr.HighlightedText(label="Suspicious words", color_map={"homophone ok": "#5fb36b"})
+            d_out = gr.HighlightedText(label="Homophones checked (suspicious ones show the suggested word)", color_map={"homophone ok": "#5fb36b"})
             d_tab = gr.Dataframe(label="Scores", interactive=False)
             d_btn.click(detect, [d_text, d_thr], [d_out, d_tab, d_msg])
 

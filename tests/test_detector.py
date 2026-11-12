@@ -116,3 +116,9 @@ def test_evaluate_counts_originals_once():
             {"id": "2", "target": "Haus", "sentence": "Das Haus."}]
     e = evaluate_detector(HomophoneDetector(MockLM(CORPUS), lex, 1.0), rows)
     assert e["n_original"] == 1 and e["skipped"] == 1
+
+
+def test_threshold_per_call_does_not_mutate():
+    det = HomophoneDetector(FixedLM({"Meer": -1.0, "mehr": -3.0}), LEX, threshold=2.0)
+    assert not det.detect("Ich will mehr.", threshold=5.0)[0].flagged
+    assert det.threshold == 2.0 and det.detect("Ich will mehr.")[0].flagged
