@@ -25,6 +25,9 @@ from homophone_asr.pipeline import Pipeline, save_results  # noqa: E402
 log = logging.getLogger("app")
 
 PRESET = {"text": "Das Meer ist heute sehr ruhig.", "accent": "tr", "cfg": 0.5}
+EXAMPLES = [["Die tiefe Saite klingt verstimmt.", "tr", 0.5], ["Mein linkes Lid zuckt ständig.", "de", 0.5],
+            ["Im Ozean schwimmt ein großer Wal.", "tr", 0.5], ["Das Meer ist heute sehr ruhig.", "ru", 0.5],
+            ["Danke für deinen guten Rat.", "ru", 0.5], ["Ich möchte bitte mehr Wasser.", "de", 0.5]]
 DETECT_EXAMPLES = ["Ich will Meer Wasser trinken.", "Ich glaube, das er morgen kommt.",
                    "Er fährt jeden Tag mit dem Rat zur Arbeit.", "Wir wohnen mitten in der statt."]
 UNVALIDATED = ("**Synthetic accents.** The accent comes from cross-lingual voice prompting "
@@ -198,9 +201,8 @@ def build_app(pipe: Pipeline) -> gr.Blocks:
                         t_cfg = gr.Slider(0.0, 0.5, value=PRESET["cfg"], step=0.05,
                                           label="Accent strength (cfg_weight; 0 = suppressed)")
                     t_btn = gr.Button("▶ Synthesize & recognize", variant="primary")
-                    gr.Examples([[r["sentence"], "tr", 0.5] for r in pipe.sentences[:8:2]] +
-                                [["Ich möchte bitte mehr Wasser.", "ru", 0.5]],
-                                inputs=[t_text, t_acc, t_cfg], label="Examples from the sentence set")
+                    gr.Examples(EXAMPLES, inputs=[t_text, t_acc, t_cfg],
+                                label="Examples (cached from the smoke run → instant)")
                 with gr.Column(scale=2):
                     t_audio = gr.Audio(label="Synthesized speech", type="filepath", interactive=False)
                     t_ref = gr.Audio(label="Reference clip (accent source)", type="filepath", interactive=False)
@@ -229,7 +231,8 @@ def build_app(pipe: Pipeline) -> gr.Blocks:
             e_plot = gr.Plot(label="Heatmaps (accent × strength)", show_label=False)
             e_sum = gr.Dataframe(label="Sentence summary (context test)", interactive=False)
             e_dir = gr.Markdown()
-            e_wsum = gr.Dataframe(label="Isolated-word summary", interactive=False)
+            e_wsum = gr.Dataframe(label="Isolated-word summary – ⚠ unreliable: Chatterbox/Whisper fail on 1-word clips "
+                                          "(see results/smoke.md)", interactive=False)
             e_items = gr.Dataframe(label="All items", interactive=False, wrap=True)
             e_btn.click(run_exp, [e_acc, e_cfg, e_pairs, e_mode], [e_info, e_sum, e_plot, e_wsum, e_items, e_dir])
 

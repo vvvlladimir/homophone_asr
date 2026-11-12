@@ -66,10 +66,16 @@ homophone-asr detect-eval && homophone-asr groups              # detector benchm
 - ASR output is cached under a key built from the audio hash and all decoding parameters.
 - All settings live in `config.yaml`.
 
-## Results
+## Results (small, see the files for every item)
 
-- `results/smoke.md`: real-model smoke test (Chatterbox + whisper-small, CPU). Honest numbers and observed failures.
-- `results/detector_eval.md`: detector benchmark on the 48 sentences.
+- **`results/smoke.md`**: real-model smoke test. Chatterbox + whisper-small on CPU; 5 pairs × 4 sentences; voices tr, ru and a native-German control; `cfg_weight=0.5`.
+  - **Homophone confusion: de 15 %, tr 20 %, ru 15 %. WER: de 12 %, tr 7 %, ru 20 %.**
+  - Every confusion went from the rarer to the more frequent word: Saite→Seite ×6, Lid→Lied ×3, Wal→Wahl ×1.
+  - The native control also has errors, so part of them is TTS artifacts. With n = 20 per voice, **no accent difference is meaningful**.
+  - **Isolated-word mode failed** (1/30 accepted). Chatterbox produces fragments or babble for one-word input, and Whisper drifts into English on sub-second clips. A carrier phrase is the suggested fix (not done).
+- **`results/detector_eval.md`**: on the 48 sentences, the detector flags 45/48 target→partner swaps with the correct suggestion, and raises 0/48 false alarms on the originals.
+  - On the real smoke transcripts it caught 4/10 confusions, with 0/41 false alarms.
+  - Every miss is Seite/Saite: gbert shares Whisper's preference for the frequent word.
 
 ## What is validated vs. not
 
@@ -79,7 +85,8 @@ homophone-asr detect-eval && homophone-asr groups              # detector benchm
 | Alignment, classification and aggregation logic (unit tests, edge cases: empty input, umlauts/ß, offsets) | That `cfg_weight` maps linearly or monotonically to perceived accent strength |
 | Cache keys and reproducibility (same input = same output; Chatterbox seeded output is bit-identical on CPU) | Speaker effects: one reference speaker per language, so accent and voice are confounded |
 | Detector on the 48 sentences: originals vs. target→partner swaps (`detect-eval`) | Detector threshold generality: 2.0 nats was set a priori, and the eval set is small and self-made |
-| Pipeline end to end with real models (smoke test) | Statistical significance: the smoke test is tiny, so do not read differences between accents as findings |
+| Pipeline end to end with real models (smoke test, 90/90 items, no crashes) | Statistical significance: the smoke test is tiny, so do not read differences between accents as findings |
+| | Isolated-word mode with the current TTS/ASR (fails, see smoke.md) |
 
 Mock backends (`MockTTS`, `MockASR`, `MockLM`, `MockG2P`) only exist for tests and offline UI demos. Their numbers are simulated, and the UI and reports label them **MOCK**.
 
