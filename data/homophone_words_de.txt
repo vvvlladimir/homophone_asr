@@ -1,0 +1,34 @@
+# Extra candidate words. Groups are NOT hand-coded: words with identical espeak-ng IPA are grouped.
+# Words from data/sentences_de.csv (column "group") are always included.
+das
+dass
+seid
+seit
+Waise
+Weise
+Mine
+Miene
+Moor
+Mohr
+Mal
+Mahl
+Sohle
+Sole
+Laib
+Leib
+Rhein
+Rain
+Bund
+bunt
+Feld
+fällt
+Häute
+heute
+Lerche
+Lärche
+Grad
+Grat
+Ware
+Wahre
+Ende
+Ente

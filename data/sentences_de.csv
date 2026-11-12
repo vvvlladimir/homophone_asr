@@ -1,0 +1,49 @@
+id,pair_id,group,target,gloss,sentence
+1,p01,mehr|Meer,Meer,sea,Wir fahren im Sommer ans Meer.
+2,p01,mehr|Meer,Meer,sea,Das Meer ist heute sehr ruhig.
+3,p01,mehr|Meer,mehr,more,Ich möchte bitte mehr Wasser.
+4,p01,mehr|Meer,mehr,more,Er verdient jetzt mehr als früher.
+5,p02,Wal|Wahl,Wal,whale,Im Ozean schwimmt ein großer Wal.
+6,p02,Wal|Wahl,Wal,whale,Der Wal frisst winzige Krebse.
+7,p02,Wal|Wahl,Wahl,election/choice,Die Wahl ist am nächsten Sonntag.
+8,p02,Wal|Wahl,Wahl,election/choice,Wir hatten leider keine andere Wahl.
+9,p03,Lied|Lid,Lied,song,Sie singt ein schönes Lied.
+10,p03,Lied|Lid,Lied,song,Das Lied läuft ständig im Radio.
+11,p03,Lied|Lid,Lid,eyelid,Mein linkes Lid zuckt ständig.
+12,p03,Lied|Lid,Lid,eyelid,Ein Insekt ist unter mein Lid geraten.
+13,p04,Seite|Saite,Seite,page/side,Bitte lies die nächste Seite vor.
+14,p04,Seite|Saite,Seite,page/side,Er steht auf unserer Seite.
+15,p04,Seite|Saite,Saite,string (instrument),An der Gitarre ist eine Saite gerissen.
+16,p04,Seite|Saite,Saite,string (instrument),Die tiefe Saite klingt verstimmt.
+17,p05,Rad|Rat,Rad,wheel/bike,Ich fahre jeden Tag mit dem Rad.
+18,p05,Rad|Rat,Rad,wheel/bike,Am Auto fehlt ein Rad.
+19,p05,Rad|Rat,Rat,advice/council,Danke für deinen guten Rat.
+20,p05,Rad|Rat,Rat,advice/council,Kannst du mir einen Rat geben?
+21,p06,Stadt|statt,Stadt,city,Wir wohnen mitten in der Stadt.
+22,p06,Stadt|statt,Stadt,city,Die Stadt baut eine neue Brücke.
+23,p06,Stadt|statt,statt,instead of,Ich trinke Tee statt Kaffee.
+24,p06,Stadt|statt,statt,instead of,Nimm lieber Reis statt Nudeln.
+25,p07,viel|fiel,viel,much,Wir haben heute viel gelernt.
+26,p07,viel|fiel,viel,much,Er trinkt nicht viel Kaffee.
+27,p07,viel|fiel,fiel,fell,Das Glas fiel auf den Boden.
+28,p07,viel|fiel,fiel,fell,Im Winter fiel kaum Schnee.
+29,p08,Lehre|Leere,Lehre,apprenticeship/lesson,Er beginnt eine Lehre als Bäcker.
+30,p08,Lehre|Leere,Lehre,apprenticeship/lesson,Das war mir eine Lehre.
+31,p08,Lehre|Leere,Leere,emptiness,Nach dem Abschied fühlte sie große Leere.
+32,p08,Lehre|Leere,Leere,emptiness,Er starrte lange in die Leere.
+33,p09,Tod|tot,Tod,death,Der Tod des Königs schockierte alle.
+34,p09,Tod|tot,Tod,death,Sie hat keine Angst vor dem Tod.
+35,p09,Tod|tot,tot,dead,Die Pflanze ist leider tot.
+36,p09,Tod|tot,tot,dead,Der Fisch lag tot im Wasser.
+37,p10,wieder|wider,wieder,again,Komm bitte bald wieder.
+38,p10,wieder|wider,wieder,again,Er hat schon wieder verschlafen.
+39,p10,wieder|wider,wider,against,Das spricht wider jede Vernunft.
+40,p10,wieder|wider,wider,against,Er handelte wider besseres Wissen.
+41,p11,malen|mahlen,malen,to paint,Die Kinder malen ein Bild.
+42,p11,malen|mahlen,malen,to paint,Ich möchte die Wand blau malen.
+43,p11,malen|mahlen,mahlen,to grind,Wir mahlen den Kaffee frisch.
+44,p11,malen|mahlen,mahlen,to grind,Die Mühle soll das Korn mahlen.
+45,p12,Stiel|Stil,Stiel,stem/handle,Die Rose hat einen langen Stiel.
+46,p12,Stiel|Stil,Stiel,stem/handle,Der Stiel der Pfanne ist heiß.
+47,p12,Stiel|Stil,Stil,style,Ihr Stil ist sehr elegant.
+48,p12,Stiel|Stil,Stil,style,Der Text hat einen klaren Stil.
