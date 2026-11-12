@@ -14,6 +14,9 @@ import numpy as np
 import soundfile as sf
 
 MOCK_MAGIC = [12345, -12345, 4242, -4242]
+# languages Chatterbox Multilingual 0.1.7 accepts as language_id
+CHATTERBOX_LANGS = {"ar", "da", "de", "el", "en", "es", "fi", "fr", "he", "hi", "it", "ja", "ko", "ms", "nl",
+                    "no", "pl", "pt", "ru", "sv", "sw", "tr", "zh"}
 MOCK_SR = 16000
 
 
@@ -25,7 +28,8 @@ class TTSBackend(Protocol):
         ...
 
     def synthesize(self, text: str, out_path: Path, accent: str, ref_path: str | None,
-                   cfg_weight: float) -> None:
+                   cfg_weight: float, language_id: str | None = None) -> None:
+        """language_id: pronunciation rules used to read the (German) text; None = backend default."""
         ...
 
 
@@ -40,9 +44,10 @@ class MockTTS:
     def cache_params(self) -> dict:
         return {"backend": "mock-tts-v1", "seed": self.seed}
 
-    def synthesize(self, text, out_path, accent, ref_path, cfg_weight):
+    def synthesize(self, text, out_path, accent, ref_path, cfg_weight, language_id=None):
         payload = json.dumps({"text": text, "accent": accent, "cfg": round(float(cfg_weight), 3),
-                              "ref": bool(ref_path)}, ensure_ascii=False).encode("utf-8")
+                              "ref": bool(ref_path), "lang": language_id or "de"},
+                             ensure_ascii=False).encode("utf-8")
         data = np.array(MOCK_MAGIC + [len(payload)] + list(payload), dtype=np.int16)
         t = np.arange(int(0.25 * MOCK_SR)) / MOCK_SR
         tone = (0.05 * np.sin(2 * np.pi * 220 * t) * 32767).astype(np.int16)
@@ -89,7 +94,7 @@ class ChatterboxTTS:
             self._builtin = self._model.conds  # prepare_conditionals() replaces, never mutates
         return self._model
 
-    def synthesize(self, text, out_path, accent, ref_path, cfg_weight):
+    def synthesize(self, text, out_path, accent, ref_path, cfg_weight, language_id=None):
         import random
 
         import torch
@@ -104,7 +109,7 @@ class ChatterboxTTS:
         torch.manual_seed(self.seed)
         random.seed(self.seed)
         np.random.seed(self.seed)
-        wav = m.generate(text, language_id=self.language_id, exaggeration=self.exaggeration,
+        wav = m.generate(text, language_id=language_id or self.language_id, exaggeration=self.exaggeration,
                          cfg_weight=float(cfg_weight), temperature=self.temperature)
         sf.write(str(out_path), wav.squeeze(0).cpu().numpy(), m.sr, subtype="PCM_16")
 

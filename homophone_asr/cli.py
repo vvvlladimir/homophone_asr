@@ -90,7 +90,8 @@ def cmd_run(args) -> int:
     def prog(frac, desc):
         print(f"\r[{frac:5.1%}] {desc[:90]:<90}", end="", file=sys.stderr, flush=True)
 
-    res = p.run_experiment(accents, cfgs, rows, args.mode, prog)
+    read_as = args.read_as or cfg["tts"].get("read_as", "de")
+    res = p.run_experiment(accents, cfgs, rows, args.mode, prog, read_as)
     print(file=sys.stderr)
     name = args.name or f"{'mock' if p.is_mock else 'run'}_{time.strftime('%Y%m%d_%H%M%S')}"
     d = save_results(res, cfg["paths"]["results_dir"], name)
@@ -125,10 +126,10 @@ def cmd_fetch_refs(args) -> int:
 
 def cmd_try(args) -> int:
     p = _pipeline(_cfg(args))
-    r = p.run_sentence(args.text, args.accent, args.cfg)
+    r = p.run_sentence(args.text, args.accent, args.cfg, read_as=args.read_as or p.cfg["tts"].get("read_as", "de"))
     if r.get("warning"):
         print("WARNING:", r["warning"], file=sys.stderr)
-    print(json.dumps({k: r[k] for k in ("hyp", "wer", "target", "recognized", "status", "audio_path")},
+    print(json.dumps({k: r[k] for k in ("hyp", "read_as", "wer", "target", "recognized", "status", "audio_path")},
                      ensure_ascii=False, indent=1))
     return 0
 
@@ -175,6 +176,8 @@ def build_parser() -> argparse.ArgumentParser:
     r.add_argument("--pair-ids", type=_list, default=None, help="comma list, e.g. p01,p02")
     r.add_argument("--asr-model", default=None, help="override asr.model (e.g. large-v3)")
     r.add_argument("--name", default=None, help="results sub-directory name")
+    r.add_argument("--read-as", choices=["de", "accent"], default=None,
+                   help="read text with German rules (default) or the accent language's rules (stronger)")
     r.add_argument("--no-cache", action="store_true")
     r.set_defaults(fn=cmd_run)
 
@@ -191,6 +194,7 @@ def build_parser() -> argparse.ArgumentParser:
     t.add_argument("text")
     t.add_argument("--accent", default="tr")
     t.add_argument("--cfg", type=_cfg_weight, default=0.5)
+    t.add_argument("--read-as", choices=["de", "accent"], default=None)
     t.set_defaults(fn=cmd_try)
 
     d = sub.add_parser("detect", help="flag context-implausible homophones in text")

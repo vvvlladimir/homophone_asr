@@ -112,3 +112,26 @@ def test_dataset_sentence_uses_declared_target(pipe):
     assert r["target"] == "Meer" and r["group"] == "mehr|Meer"
     free = pipe.run_sentence("Das Lied und das Meer.", "de", 0.0)
     assert free["target"] in ("das", "Lied", "Meer")
+
+
+def test_read_as_accent_changes_audio_and_keeps_default_key(pipe):
+    a = pipe.synthesize("Das Meer ist tief.", "tr", 0.5)
+    b = pipe.synthesize("Das Meer ist tief.", "tr", 0.5, read_as="accent")
+    c = pipe.synthesize("Das Meer ist tief.", "tr", 0.5, read_as="de")
+    assert a["read_as"] == "de" and b["read_as"] == "tr"
+    assert a["audio_path"] == c["audio_path"] != b["audio_path"]
+    # native German / no-reference voices fall back to German rules
+    assert pipe.text_language("de", "accent") == "de" and pipe.text_language("none", "accent") == "de"
+    with pytest.raises(ValueError):
+        pipe.text_language("tr", "xx")
+
+
+def test_experiment_read_as_in_meta(pipe):
+    res = pipe.run_experiment(["tr"], [1.0], pipe.select(limit_pairs=1), read_as="accent")
+    assert res["meta"]["read_as"] == "accent" and all(r["read_as"] == "tr" for r in res["sentences"])
+
+
+def test_cli_try_read_as(capsys):
+    assert cli.main(["--mock", "try", "Das Meer ist tief.", "--accent", "ru", "--cfg", "1.0",
+                     "--read-as", "accent"]) == 0
+    assert '"read_as": "ru"' in capsys.readouterr().out

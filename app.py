@@ -95,23 +95,34 @@ def build_app(pipe: Pipeline) -> gr.Blocks:
     cfg = pipe.cfg
     choices = accent_choices(cfg)
     gloss = {r["target"].lower(): r["gloss"] for r in pipe.sentences}
+    CFG_MAX = float(cfg["tts"].get("cfg_weight_max", 1.0))
+    CFG_OPTIONS = [c for c in (0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.7, 1.0) if c <= CFG_MAX]
+    READ_AS_DEFAULT = cfg["tts"].get("read_as", "de")
+    READ_AS_CHOICES = [("German rules (default)", "de"),
+                       ("Accent-language rules – stronger accent, experimental", "accent")]
     mock_note = ("\n\n> 🧪 **MOCK MODE** – TTS/ASR/LM are simulations; numbers are meaningless."
                  if pipe.is_mock else "")
 
     # ---- Try it
-    def try_it(text, accent, cfg_weight, progress=gr.Progress()):
+    def try_it(text, accent, cfg_weight, read_as="de", progress=gr.Progress()):
         text = (text or "").strip()
         if not text:
             gr.Warning("Please type a German sentence.")
             return None, "", [], "", [], "_Type a German sentence first._", None
         progress(0.1, desc="Synthesizing (≈25 s per new sentence on CPU; cached results are instant)…")
-        r = pipe.run_sentence(text, accent, float(cfg_weight))
+        r = pipe.run_sentence(text, accent, float(cfg_weight), read_as=read_as)
         notes = []
         if r.get("warning"):
             notes.append(f"⚠️ **No accent reference:** {r['warning']}")
         elif r.get("ref_path"):
             notes.append(f"Reference clip: `{Path(r['ref_path']).parent.name}/{Path(r['ref_path']).name}` "
                          f"(Common Voice, CC0)")
+        if r["read_as"] != cfg["tts"].get("language_id", "de"):
+            notes.append(f"text read with **{r['read_as']}** pronunciation rules (experimental)")
+        elif read_as == "accent":
+            notes.append("accent-language reading not available for this voice → German rules used")
+        if float(cfg_weight) > 0.5:
+            notes.append("cfg_weight > 0.5 (experimental)")
         notes.append("cached" if r["tts_cached"] and r["asr_cached"] else "freshly generated")
         if r["status"] is None:
             verdict = "No known homophone in this sentence – showing plain WER only."
@@ -134,14 +145,14 @@ def build_app(pipe: Pipeline) -> gr.Blocks:
     for r in pipe.sentences:
         pair_labels.setdefault(r["group"].replace("|", " / "), r["pair_id"])
 
-    def run_exp(accents, cfgs, pairs, mode, progress=gr.Progress()):
+    def run_exp(accents, cfgs, pairs, mode, read_as="de", progress=gr.Progress()):
         if not accents or not cfgs or not pairs:
             gr.Warning("Select at least one accent, one strength and one pair.")
             return ("⚠️ _Select at least one accent, one strength and one pair – previous results kept._",
                     *[gr.skip()] * 5)
         rows = pipe.select([pair_labels[p] for p in pairs])
         res = pipe.run_experiment(list(accents), sorted(float(c) for c in cfgs), rows, mode,
-                                  lambda f, d: progress(f, desc=d))
+                                  lambda f, d: progress(f, desc=d), read_as)
         save_results(res, cfg["paths"]["results_dir"], "last_ui_run" + ("_mock" if pipe.is_mock else ""))
         return exp_outputs(res["summary"], res["word_summary"], res["sentences"] + res["words"],
                            res["directions"], "Fresh run (saved to results/last_ui_run).", res["meta"])
@@ -150,7 +161,9 @@ def build_app(pipe: Pipeline) -> gr.Blocks:
         no_ref = [a for a, ref in (meta.get("refs") or {}).items() if ref is None and a != "none"]
         info = f"**{title}**" + (" – MOCK numbers" if meta.get("mock") else "")
         info += f"  \nASR: `{meta.get('asr', {}).get('model', meta.get('asr', {}).get('backend'))}` · " \
-                f"accents: {meta.get('accents')} · cfg: {meta.get('cfg_weights')} · {meta.get('seconds')} s"
+                f"accents: {meta.get('accents')} · cfg: {meta.get('cfg_weights')} · " \
+                f"text read with: {'accent-language rules' if meta.get('read_as') == 'accent' else 'German rules'} · " \
+                f"{meta.get('seconds')} s"
         if no_ref:
             info += f"  \n⚠️ No accent reference for {no_ref}: those rows used the default voice."
         return (info, summary, heatmaps(summary), wsum, items_table(rows), directions_md(directions))
@@ -198,8 +211,10 @@ def build_app(pipe: Pipeline) -> gr.Blocks:
                     t_text = gr.Textbox(PRESET["text"], label="German sentence", lines=1)
                     with gr.Row():
                         t_acc = gr.Dropdown(choices, value=PRESET["accent"], label="Accent (reference-clip language)")
-                        t_cfg = gr.Slider(0.0, 0.5, value=PRESET["cfg"], step=0.05,
-                                          label="Accent strength (cfg_weight; 0 = suppressed)")
+                        t_cfg = gr.Slider(0.0, CFG_MAX, value=PRESET["cfg"], step=0.05,
+                                          label="Accent strength (cfg_weight; 0 = suppressed, 0.5 = default, "
+                                                ">0.5 experimental)")
+                    t_read = gr.Radio(READ_AS_CHOICES, value=READ_AS_DEFAULT, label="Pronunciation rules for the text")
                     t_btn = gr.Button("▶ Synthesize & recognize", variant="primary")
                     gr.Examples(EXAMPLES, inputs=[t_text, t_acc, t_cfg],
                                 label="Examples (cached from the smoke run → instant)")
@@ -213,17 +228,19 @@ def build_app(pipe: Pipeline) -> gr.Blocks:
                                         show_legend=True, combine_adjacent=False)
             t_det = gr.HighlightedText(label="Detector on the ASR transcript",
                                        color_map={"homophone ok": "#5fb36b"}, show_legend=False)
-            t_btn.click(try_it, [t_text, t_acc, t_cfg], [t_audio, t_hyp, t_diff, t_verdict, t_det, t_note, t_ref])
+            t_btn.click(try_it, [t_text, t_acc, t_cfg, t_read], [t_audio, t_hyp, t_diff, t_verdict, t_det, t_note, t_ref])
 
         with gr.Tab("Experiment"):
             with gr.Row():
                 e_acc = gr.CheckboxGroup(choices, value=["de", "tr", "ru"], label="Accents")
-                e_cfg = gr.CheckboxGroup([0.0, 0.1, 0.2, 0.3, 0.4, 0.5], value=[0.0, 0.5], label="Accent strengths")
+                e_cfg = gr.CheckboxGroup(CFG_OPTIONS, value=[0.0, 0.5],
+                                         label="Accent strengths (cfg_weight; >0.5 experimental)")
             with gr.Row():
                 e_pairs = gr.Dropdown(list(pair_labels), value=list(pair_labels)[:2], multiselect=True,
                                       label="Homophone pairs (4 sentences each)")
                 e_mode = gr.Radio(["sentences", "words", "both"], value="sentences",
                                   label="Mode (words: isolated, all group members accepted)")
+                e_read = gr.Radio(READ_AS_CHOICES, value=READ_AS_DEFAULT, label="Pronunciation rules for the text")
             gr.Markdown("On CPU every *new* clip costs ≈25 s (e.g. 2 pairs × 3 accents × 2 strengths = 48 clips "
                         "≈ 20 min). Cached clips are instant.")
             e_btn = gr.Button("Run experiment", variant="primary")
@@ -234,7 +251,7 @@ def build_app(pipe: Pipeline) -> gr.Blocks:
             e_wsum = gr.Dataframe(label="Isolated-word summary – ⚠ unreliable: Chatterbox/Whisper fail on 1-word clips "
                                           "(see results/smoke.md)", interactive=False)
             e_items = gr.Dataframe(label="All items", interactive=False, wrap=True)
-            e_btn.click(run_exp, [e_acc, e_cfg, e_pairs, e_mode], [e_info, e_sum, e_plot, e_wsum, e_items, e_dir])
+            e_btn.click(run_exp, [e_acc, e_cfg, e_pairs, e_mode, e_read], [e_info, e_sum, e_plot, e_wsum, e_items, e_dir])
 
         with gr.Tab("Detector"):
             d_text = gr.Textbox(DETECT_EXAMPLES[0], label="German text (e.g. an ASR transcript)", lines=3)

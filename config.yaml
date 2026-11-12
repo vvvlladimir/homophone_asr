@@ -23,7 +23,11 @@ tts:
   device: cpu              # cpu | cuda | mps
   exaggeration: 0.5
   temperature: 0.8
-  cfg_weight: 0.5          # accent-strength knob (0.0 = accent suppressed, 0.5 = strong)
+  cfg_weight: 0.5          # accent-strength knob (0.0 = suppressed, 0.5 = Chatterbox default)
+  cfg_weight_max: 1.0      # UI slider max; values > 0.5 are experimental (stronger accent, less clarity)
+  read_as: de              # de = read text with German rules (default);
+                           # accent = read German text with the accent language's rules (tr, ru, ...):
+                           #          much stronger, uncontrolled accent (experimental)
   ref_min_s: 5.0
   ref_max_s: 10.0
   accents:                 # reference-clip language -> display name

@@ -12,10 +12,11 @@ from .asr import ASRBackend, make_asr
 from .cache import Cache, content_hash, file_hash
 from .confusion import Lexicon, load_lexicon, read_sentences
 from .refs import resolve_ref
-from .tts import TTSBackend, make_tts
+from .tts import CHATTERBOX_LANGS, TTSBackend, make_tts
 
 log = logging.getLogger(__name__)
 NO_REF_LABEL = "none"   # accent key meaning: TTS default voice, no reference clip
+READ_AS = ("de", "accent")  # de: German pronunciation rules; accent: read text with the accent language's rules
 
 
 class Pipeline:
@@ -42,21 +43,33 @@ class Pipeline:
             self._refs[accent] = resolve_ref(self.cfg, accent, self.allow_download)
         return self._refs[accent]
 
-    def synthesize(self, text: str, accent: str, cfg_weight: float) -> dict:
+    def text_language(self, accent: str, read_as: str = "de") -> str:
+        """Language whose pronunciation rules are used to read the German text."""
+        default = self.cfg["tts"].get("language_id", "de")
+        if read_as not in READ_AS:
+            raise ValueError(f"read_as={read_as!r}; allowed: {READ_AS}")
+        if read_as == "accent" and accent in CHATTERBOX_LANGS:
+            return accent
+        return default
+
+    def synthesize(self, text: str, accent: str, cfg_weight: float, read_as: str = "de") -> dict:
         ref, warning = self.ref_for(accent)
+        lang = self.text_language(accent, read_as)
         kd = {"text": text, "ref": file_hash(ref) if ref else None,
               "cfg_weight": round(float(cfg_weight), 3), "tts": self.tts.cache_params()}
         if ref is None:
             kd["accent"] = accent   # no ref: output may still depend on the label (e.g. MockTTS)
+        if lang != self.cfg["tts"].get("language_id", "de"):
+            kd["language_id"] = lang  # only when non-default, so existing cache keys stay valid
         key = content_hash(kd)
         path = self.cache.path("audio", key, "wav")
         cached = path.exists() and self.cache.enabled
         if not cached:
             tmp = path.with_name(path.stem + ".part.wav")
-            self.tts.synthesize(text, tmp, accent, ref, float(cfg_weight))
+            self.tts.synthesize(text, tmp, accent, ref, float(cfg_weight), lang)
             tmp.replace(path)
         return {"audio_path": str(path), "ref_path": ref, "ref_used": ref is not None,
-                "warning": warning, "tts_cached": cached}
+                "warning": warning, "tts_cached": cached, "read_as": lang}
 
     def transcribe(self, audio_path: str) -> dict:
         key = content_hash({"audio": file_hash(audio_path), "asr": self.asr.cache_params()})
@@ -75,8 +88,8 @@ class Pipeline:
 
     # ---------- single items ----------
     def run_sentence(self, sentence: str, accent: str, cfg_weight: float, target: str | None = None,
-                     group: str | None = None, meta: dict | None = None) -> dict:
-        syn = self.synthesize(sentence, accent, cfg_weight)
+                     group: str | None = None, meta: dict | None = None, read_as: str = "de") -> dict:
+        syn = self.synthesize(sentence, accent, cfg_weight, read_as)
         asr = self.transcribe(syn["audio_path"])
         if not target:  # known dataset sentence -> its target; else every lexicon word is a candidate
             known = next((r for r in self.sentences if analyze.normalize(r["sentence"]) == analyze.normalize(sentence)), None)
@@ -103,8 +116,8 @@ class Pipeline:
         return row
 
     def run_word(self, word: str, accent: str, cfg_weight: float, group: str | None = None,
-                 meta: dict | None = None) -> dict:
-        syn = self.synthesize(word, accent, cfg_weight)
+                 meta: dict | None = None, read_as: str = "de") -> dict:
+        syn = self.synthesize(word, accent, cfg_weight, read_as)
         asr = self.transcribe(syn["audio_path"])
         grp = self._group(word, group)
         return {**(meta or {}), "mode": "word", "accent": accent, "cfg_weight": float(cfg_weight),
@@ -121,7 +134,8 @@ class Pipeline:
         return [r for r in self.sentences if r["pair_id"] in set(pids)]
 
     def run_experiment(self, accents: list[str], cfg_weights: list[float], rows: list[dict] | None = None,
-                       mode: str = "sentences", progress: Callable[[float, str], None] | None = None) -> dict:
+                       mode: str = "sentences", progress: Callable[[float, str], None] | None = None,
+                       read_as: str = "de") -> dict:
         rows = rows if rows is not None else self.sentences
         jobs = []
         if mode in ("sentences", "both"):
@@ -143,9 +157,10 @@ class Pipeline:
                     meta = {"pair_id": r["pair_id"], "id": r.get("id")}
                     try:
                         if kind == "s":
-                            out_s.append(self.run_sentence(r["sentence"], acc, cw, r["target"], r["group"], meta))
+                            out_s.append(self.run_sentence(r["sentence"], acc, cw, r["target"], r["group"], meta,
+                                                           read_as))
                         else:
-                            out_w.append(self.run_word(r["target"], acc, cw, r["group"], meta))
+                            out_w.append(self.run_word(r["target"], acc, cw, r["group"], meta, read_as))
                     except Exception as e:  # record failures instead of aborting a long run
                         log.exception("item failed")
                         (out_s if kind == "s" else out_w).append({**meta, "accent": acc, "cfg_weight": cw,
@@ -155,10 +170,11 @@ class Pipeline:
         return {"sentences": out_s, "words": out_w,
                 "summary": analyze.aggregate(ok_s), "word_summary": analyze.aggregate_words(ok_w),
                 "directions": analyze.confusion_directions(ok_s + ok_w),
-                "meta": self.run_meta(accents, cfg_weights, mode, time.time() - t0)}
+                "meta": self.run_meta(accents, cfg_weights, mode, time.time() - t0, read_as)}
 
-    def run_meta(self, accents, cfg_weights, mode, seconds) -> dict:
+    def run_meta(self, accents, cfg_weights, mode, seconds, read_as: str = "de") -> dict:
         return {"accents": accents, "cfg_weights": cfg_weights, "mode": mode, "seconds": round(seconds, 1),
+                "read_as": read_as,
                 "tts": self.tts.cache_params(), "asr": self.asr.cache_params(), "mock": self.is_mock,
                 "refs": {a: (Path(self.ref_for(a)[0]).name if self.ref_for(a)[0] else None) for a in accents}}
 
@@ -190,7 +206,8 @@ def report_md(res: dict, title: str) -> str:
     lines = [f"# {title}", ""]
     if m.get("mock"):
         lines += ["> **MOCK BACKENDS – simulated numbers, not a measurement.**", ""]
-    lines += [f"- TTS: `{m['tts']}`", f"- ASR: `{m['asr']}`", f"- reference clips: `{m['refs']}`",
+    lines += [f"- text read with: {'accent-language rules (stronger, experimental)' if m.get('read_as') == 'accent' else 'German rules'}",
+              f"- TTS: `{m['tts']}`", f"- ASR: `{m['asr']}`", f"- reference clips: `{m['refs']}`",
               f"- runtime: {m['seconds']} s", "",
               "Synthetic accents are produced by cross-lingual voice prompting and are NOT validated "
               "against real L2 speech.", ""]

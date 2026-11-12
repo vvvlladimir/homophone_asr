@@ -39,6 +39,8 @@ class MockASR:
         if req is None:
             return ""
         rate = self.BASE_RATE.get(req["accent"], 0.15) * (0.4 + 1.2 * float(req["cfg"]))
+        if req.get("lang", "de") != "de":
+            rate = min(0.9, rate * 1.5)
         out = []
         for i, tok in enumerate(req["text"].split()):
             core = tok.strip(".,!?;:\"'()")

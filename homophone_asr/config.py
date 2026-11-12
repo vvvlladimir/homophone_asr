@@ -44,6 +44,9 @@ def validate(cfg: dict) -> None:
         v = (cfg.get("backends") or {}).get(k)
         if v not in ok:
             raise ValueError(f"config backends.{k}={v!r}; allowed: {sorted(ok)}")
+    ra = (cfg.get("tts") or {}).get("read_as", "de")
+    if ra not in ("de", "accent"):
+        raise ValueError(f"tts.read_as={ra!r}; allowed: ['accent', 'de']")
     cw = (cfg.get("tts") or {}).get("cfg_weight", 0.5)
     if not 0.0 <= float(cw) <= 1.0:
         raise ValueError(f"tts.cfg_weight={cw} outside [0, 1]")
