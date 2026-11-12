@@ -1,0 +1,57 @@
+# homophone_asr – single configuration file. All paths are relative to this file.
+seed: 1234
+
+paths:
+  cache_dir: .cache/homophone_asr      # content-hash cache for audio + ASR results
+  refs_dir: refs                       # reference voices: refs/<lang>/*.wav (5-10 s)
+  results_dir: results
+  sentences: data/sentences_de.csv
+  lexicon: data/homophone_words_de.txt # extra words used to build homophone groups
+
+backends:            # "real" implementation or "mock" (no GPU, no downloads)
+  tts: chatterbox    # chatterbox | mock
+  asr: faster_whisper  # faster_whisper | mock
+  lm: gbert          # gbert | mock
+  g2p: espeak        # espeak | mock
+
+g2p:
+  language: de
+  strip_stress: true
+
+tts:
+  language_id: de          # text language is always German
+  device: cpu              # cpu | cuda | mps
+  exaggeration: 0.5
+  temperature: 0.8
+  cfg_weight: 0.5          # accent-strength knob (0.0 = accent suppressed, 0.5 = strong)
+  ref_min_s: 5.0
+  ref_max_s: 10.0
+  accents:                 # reference-clip language -> display name
+    de: "German (native control)"
+    tr: "Turkish L1 (synthetic)"
+    ru: "Russian L1 (synthetic)"
+    ar: "Arabic L1 (synthetic)"
+    en: "English L1 (synthetic)"
+  common_voice:            # fallback source for reference clips (CC0)
+    enabled: true
+    repo: fixie-ai/common_voice_17_0   # parquet mirror of Mozilla Common Voice 17.0
+    split: test
+
+asr:
+  model: small             # tiny | base | small | medium | large-v3
+  device: cpu
+  compute_type: int8
+  language: de
+  beam_size: 5             # fixed for reproducibility
+  temperature: 0.0         # greedy/beam, no sampling fallback
+  condition_on_previous_text: false
+  vad_filter: false
+
+detector:
+  model: deepset/gbert-base
+  device: cpu
+  threshold: 2.0           # flag if log p(partner) - log p(original) >= threshold (nats)
+
+experiment:
+  accents: [de, tr, ru, en]
+  cfg_weights: [0.0, 0.3, 0.5]

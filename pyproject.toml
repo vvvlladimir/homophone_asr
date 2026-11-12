@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "homophone_asr"
+version = "0.1.0"
+description = "German homophone stress test for ASR with synthetic L1-style accents"
+requires-python = ">=3.10,<3.13"
+dependencies = [
+  "pyyaml", "numpy", "pandas", "jiwer>=3.0", "soundfile", "matplotlib", "phonemizer",
+]
+
+[project.optional-dependencies]
+real = ["chatterbox-tts==0.1.7", "faster-whisper>=1.1", "transformers", "torch", "datasets", "huggingface_hub"]
+ui = ["gradio"]
+dev = ["pytest"]
+
+[project.scripts]
+homophone-asr = "homophone_asr.cli:main"
+
+[tool.setuptools]
+packages = ["homophone_asr"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
