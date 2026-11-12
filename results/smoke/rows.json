@@ -1,0 +1,4938 @@
+{
+ "meta": {
+  "accents": [
+   "de",
+   "tr",
+   "ru"
+  ],
+  "cfg_weights": [
+   0.5
+  ],
+  "mode": "both",
+  "seconds": 2197.3,
+  "tts": {
+   "backend": "chatterbox-mtl",
+   "version": "0.1.7",
+   "lang": "de",
+   "exaggeration": 0.5,
+   "temperature": 0.8,
+   "seed": 1234
+  },
+  "asr": {
+   "backend": "faster-whisper",
+   "model": "small",
+   "compute_type": "int8",
+   "language": "de",
+   "beam_size": 5,
+   "temperature": 0.0,
+   "condition_on_previous_text": false,
+   "vad_filter": false
+  },
+  "mock": false,
+  "refs": {
+   "de": "cv17_common_voice_de_20272292.wav",
+   "tr": "cv17_common_voice_tr_18967997.wav",
+   "ru": "cv17_common_voice_ru_18988621.wav"
+  }
+ },
+ "sentences": [
+  {
+   "pair_id": "p01",
+   "id": "1",
+   "mode": "sentence",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Wir fahren im Sommer ans Meer.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/472aabd12ce5ec13bb24178d.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Die Fäden im Sommer ans Meer.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 2,
+   "wer": 0.3333333333333333,
+   "subs": 2,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "wir fahren im sommer ans meer",
+   "hyp_norm": "die fäden im sommer ans meer",
+   "target": "Meer",
+   "target_idx": 5,
+   "recognized": "meer",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "substitute",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "wir",
+     "hyp": "die"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "fahren",
+     "hyp": "fäden"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "im",
+     "hyp": "im"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "sommer",
+     "hyp": "sommer"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "ans",
+     "hyp": "ans"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "meer",
+     "hyp": "meer"
+    }
+   ],
+   "group": "mehr|Meer"
+  },
+  {
+   "pair_id": "p01",
+   "id": "2",
+   "mode": "sentence",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Das Meer ist heute sehr ruhig.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/e6178950d94da37894bfa15b.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Das Meer ist heute sehr ruhig.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "das meer ist heute sehr ruhig",
+   "hyp_norm": "das meer ist heute sehr ruhig",
+   "target": "Meer",
+   "target_idx": 1,
+   "recognized": "meer",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "das",
+     "hyp": "das"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "meer",
+     "hyp": "meer"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "ist",
+     "hyp": "ist"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "heute",
+     "hyp": "heute"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "sehr",
+     "hyp": "sehr"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "ruhig",
+     "hyp": "ruhig"
+    }
+   ],
+   "group": "mehr|Meer"
+  },
+  {
+   "pair_id": "p01",
+   "id": "3",
+   "mode": "sentence",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Ich möchte bitte mehr Wasser.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/356c79a50fa6b6fabc0d3f68.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Ich möchte bitte mehr Wasser.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 5,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "ich möchte bitte mehr wasser",
+   "hyp_norm": "ich möchte bitte mehr wasser",
+   "target": "mehr",
+   "target_idx": 3,
+   "recognized": "mehr",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "ich",
+     "hyp": "ich"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "möchte",
+     "hyp": "möchte"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "bitte",
+     "hyp": "bitte"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "mehr",
+     "hyp": "mehr"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "wasser",
+     "hyp": "wasser"
+    }
+   ],
+   "group": "mehr|Meer"
+  },
+  {
+   "pair_id": "p01",
+   "id": "4",
+   "mode": "sentence",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Er verdient jetzt mehr als früher.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/e753bd6c36ff0f14178511b4.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Er verdient jetzt mehr als früher.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "er verdient jetzt mehr als früher",
+   "hyp_norm": "er verdient jetzt mehr als früher",
+   "target": "mehr",
+   "target_idx": 3,
+   "recognized": "mehr",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "er",
+     "hyp": "er"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "verdient",
+     "hyp": "verdient"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "jetzt",
+     "hyp": "jetzt"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "mehr",
+     "hyp": "mehr"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "als",
+     "hyp": "als"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "früher",
+     "hyp": "früher"
+    }
+   ],
+   "group": "mehr|Meer"
+  },
+  {
+   "pair_id": "p02",
+   "id": "5",
+   "mode": "sentence",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Im Ozean schwimmt ein großer Wal.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/86d80d060c8b6a98adba9475.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Im Ozean schwimmt ein großer Wall.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 1,
+   "wer": 0.16666666666666666,
+   "subs": 1,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "im ozean schwimmt ein großer wal",
+   "hyp_norm": "im ozean schwimmt ein großer wall",
+   "target": "Wal",
+   "target_idx": 5,
+   "recognized": "wall",
+   "status": "other_substitution",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "im",
+     "hyp": "im"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "ozean",
+     "hyp": "ozean"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "schwimmt",
+     "hyp": "schwimmt"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "ein",
+     "hyp": "ein"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "großer",
+     "hyp": "großer"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "wal",
+     "hyp": "wall"
+    }
+   ],
+   "group": "Wal|Wahl"
+  },
+  {
+   "pair_id": "p02",
+   "id": "6",
+   "mode": "sentence",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Der Wal frisst winzige Krebse.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/511ad1a183f07d3191af73c5.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "der Wallfrist winzige Klebse.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 4,
+   "errors": 3,
+   "wer": 0.6,
+   "subs": 2,
+   "dels": 1,
+   "ins": 0,
+   "ref_norm": "der wal frisst winzige krebse",
+   "hyp_norm": "der wallfrist winzige klebse",
+   "target": "Wal",
+   "target_idx": 1,
+   "recognized": "wallfrist",
+   "status": "other_substitution",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "der",
+     "hyp": "der"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "wal",
+     "hyp": "wallfrist"
+    },
+    {
+     "op": "delete",
+     "ref_idx": 2,
+     "hyp_idx": null,
+     "ref": "frisst",
+     "hyp": null
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 2,
+     "ref": "winzige",
+     "hyp": "winzige"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 4,
+     "hyp_idx": 3,
+     "ref": "krebse",
+     "hyp": "klebse"
+    }
+   ],
+   "group": "Wal|Wahl"
+  },
+  {
+   "pair_id": "p02",
+   "id": "7",
+   "mode": "sentence",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Die Wahl ist am nächsten Sonntag.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/1be0709f0298b35184a10575.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Die Wahl ist am nächsten Sonntag.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "die wahl ist am nächsten sonntag",
+   "hyp_norm": "die wahl ist am nächsten sonntag",
+   "target": "Wahl",
+   "target_idx": 1,
+   "recognized": "wahl",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "die",
+     "hyp": "die"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "wahl",
+     "hyp": "wahl"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "ist",
+     "hyp": "ist"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "am",
+     "hyp": "am"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "nächsten",
+     "hyp": "nächsten"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "sonntag",
+     "hyp": "sonntag"
+    }
+   ],
+   "group": "Wal|Wahl"
+  },
+  {
+   "pair_id": "p02",
+   "id": "8",
+   "mode": "sentence",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Wir hatten leider keine andere Wahl.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/8e50365f655f1b89b146f044.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Wir hatten leider keine andere Wahl.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "wir hatten leider keine andere wahl",
+   "hyp_norm": "wir hatten leider keine andere wahl",
+   "target": "Wahl",
+   "target_idx": 5,
+   "recognized": "wahl",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "wir",
+     "hyp": "wir"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "hatten",
+     "hyp": "hatten"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "leider",
+     "hyp": "leider"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "keine",
+     "hyp": "keine"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "andere",
+     "hyp": "andere"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "wahl",
+     "hyp": "wahl"
+    }
+   ],
+   "group": "Wal|Wahl"
+  },
+  {
+   "pair_id": "p03",
+   "id": "9",
+   "mode": "sentence",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Sie singt ein schönes Lied.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/fde41b7d4ad0f9637848b9f4.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Sie singt ein schönes Lied.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 5,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "sie singt ein schönes lied",
+   "hyp_norm": "sie singt ein schönes lied",
+   "target": "Lied",
+   "target_idx": 4,
+   "recognized": "lied",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "sie",
+     "hyp": "sie"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "singt",
+     "hyp": "singt"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "ein",
+     "hyp": "ein"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "schönes",
+     "hyp": "schönes"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "lied",
+     "hyp": "lied"
+    }
+   ],
+   "group": "Lied|Lid"
+  },
+  {
+   "pair_id": "p03",
+   "id": "10",
+   "mode": "sentence",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Das Lied läuft ständig im Radio.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/6dcb992b5356da1f71b2f6f5.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Das Lied läuft ständig im Radio.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "das lied läuft ständig im radio",
+   "hyp_norm": "das lied läuft ständig im radio",
+   "target": "Lied",
+   "target_idx": 1,
+   "recognized": "lied",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "das",
+     "hyp": "das"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "lied",
+     "hyp": "lied"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "läuft",
+     "hyp": "läuft"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "ständig",
+     "hyp": "ständig"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "im",
+     "hyp": "im"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "radio",
+     "hyp": "radio"
+    }
+   ],
+   "group": "Lied|Lid"
+  },
+  {
+   "pair_id": "p03",
+   "id": "11",
+   "mode": "sentence",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Mein linkes Lid zuckt ständig.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/3212965225c3adf23e6a4ab5.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Mein linkes Lied zuckt ständig.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 5,
+   "errors": 1,
+   "wer": 0.2,
+   "subs": 1,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "mein linkes lid zuckt ständig",
+   "hyp_norm": "mein linkes lied zuckt ständig",
+   "target": "Lid",
+   "target_idx": 2,
+   "recognized": "lied",
+   "status": "homophone_confusion",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "mein",
+     "hyp": "mein"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "linkes",
+     "hyp": "linkes"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "lid",
+     "hyp": "lied"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "zuckt",
+     "hyp": "zuckt"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "ständig",
+     "hyp": "ständig"
+    }
+   ],
+   "group": "Lied|Lid"
+  },
+  {
+   "pair_id": "p03",
+   "id": "12",
+   "mode": "sentence",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Ein Insekt ist unter mein Lid geraten.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/49c1af34cfedbc0b6d042ce7.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Ein Insekt ist unter mein Litt geharten.",
+   "asr_cached": false,
+   "n_ref": 7,
+   "n_hyp": 7,
+   "errors": 2,
+   "wer": 0.2857142857142857,
+   "subs": 2,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "ein insekt ist unter mein lid geraten",
+   "hyp_norm": "ein insekt ist unter mein litt geharten",
+   "target": "Lid",
+   "target_idx": 5,
+   "recognized": "litt",
+   "status": "other_substitution",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "ein",
+     "hyp": "ein"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "insekt",
+     "hyp": "insekt"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "ist",
+     "hyp": "ist"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "unter",
+     "hyp": "unter"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "mein",
+     "hyp": "mein"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "lid",
+     "hyp": "litt"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 6,
+     "hyp_idx": 6,
+     "ref": "geraten",
+     "hyp": "geharten"
+    }
+   ],
+   "group": "Lied|Lid"
+  },
+  {
+   "pair_id": "p04",
+   "id": "13",
+   "mode": "sentence",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Bitte lies die nächste Seite vor.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/9fe65a8739b1b6be548bac1f.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Bitte liest die nächste Seite vor.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 1,
+   "wer": 0.16666666666666666,
+   "subs": 1,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "bitte lies die nächste seite vor",
+   "hyp_norm": "bitte liest die nächste seite vor",
+   "target": "Seite",
+   "target_idx": 4,
+   "recognized": "seite",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "bitte",
+     "hyp": "bitte"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "lies",
+     "hyp": "liest"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "die",
+     "hyp": "die"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "nächste",
+     "hyp": "nächste"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "seite",
+     "hyp": "seite"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "vor",
+     "hyp": "vor"
+    }
+   ],
+   "group": "Seite|Saite"
+  },
+  {
+   "pair_id": "p04",
+   "id": "14",
+   "mode": "sentence",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Er steht auf unserer Seite.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/41aeb82018a60350a33d9f90.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Er steht auf unserer Seite.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 5,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "er steht auf unserer seite",
+   "hyp_norm": "er steht auf unserer seite",
+   "target": "Seite",
+   "target_idx": 4,
+   "recognized": "seite",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "er",
+     "hyp": "er"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "steht",
+     "hyp": "steht"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "auf",
+     "hyp": "auf"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "unserer",
+     "hyp": "unserer"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "seite",
+     "hyp": "seite"
+    }
+   ],
+   "group": "Seite|Saite"
+  },
+  {
+   "pair_id": "p04",
+   "id": "15",
+   "mode": "sentence",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "An der Gitarre ist eine Saite gerissen.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/e3fd4f75c3df02fcad544282.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "An der Gitarbe ist eine Seite gerissen.",
+   "asr_cached": false,
+   "n_ref": 7,
+   "n_hyp": 7,
+   "errors": 2,
+   "wer": 0.2857142857142857,
+   "subs": 2,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "an der gitarre ist eine saite gerissen",
+   "hyp_norm": "an der gitarbe ist eine seite gerissen",
+   "target": "Saite",
+   "target_idx": 5,
+   "recognized": "seite",
+   "status": "homophone_confusion",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "an",
+     "hyp": "an"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "der",
+     "hyp": "der"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "gitarre",
+     "hyp": "gitarbe"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "ist",
+     "hyp": "ist"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "eine",
+     "hyp": "eine"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "saite",
+     "hyp": "seite"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 6,
+     "hyp_idx": 6,
+     "ref": "gerissen",
+     "hyp": "gerissen"
+    }
+   ],
+   "group": "Seite|Saite"
+  },
+  {
+   "pair_id": "p04",
+   "id": "16",
+   "mode": "sentence",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Die tiefe Saite klingt verstimmt.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/3ad3f60c7e529b98081d6024.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Die tiefe Seite klingt verstimmt.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 5,
+   "errors": 1,
+   "wer": 0.2,
+   "subs": 1,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "die tiefe saite klingt verstimmt",
+   "hyp_norm": "die tiefe seite klingt verstimmt",
+   "target": "Saite",
+   "target_idx": 2,
+   "recognized": "seite",
+   "status": "homophone_confusion",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "die",
+     "hyp": "die"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "tiefe",
+     "hyp": "tiefe"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "saite",
+     "hyp": "seite"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "klingt",
+     "hyp": "klingt"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "verstimmt",
+     "hyp": "verstimmt"
+    }
+   ],
+   "group": "Seite|Saite"
+  },
+  {
+   "pair_id": "p05",
+   "id": "17",
+   "mode": "sentence",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Ich fahre jeden Tag mit dem Rad.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/727790cb40deab6170f550e4.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Ich fange jeden Tag mit dem Rad.",
+   "asr_cached": false,
+   "n_ref": 7,
+   "n_hyp": 7,
+   "errors": 1,
+   "wer": 0.14285714285714285,
+   "subs": 1,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "ich fahre jeden tag mit dem rad",
+   "hyp_norm": "ich fange jeden tag mit dem rad",
+   "target": "Rad",
+   "target_idx": 6,
+   "recognized": "rad",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "ich",
+     "hyp": "ich"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "fahre",
+     "hyp": "fange"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "jeden",
+     "hyp": "jeden"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "tag",
+     "hyp": "tag"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "mit",
+     "hyp": "mit"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "dem",
+     "hyp": "dem"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 6,
+     "hyp_idx": 6,
+     "ref": "rad",
+     "hyp": "rad"
+    }
+   ],
+   "group": "Rad|Rat"
+  },
+  {
+   "pair_id": "p05",
+   "id": "18",
+   "mode": "sentence",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Am Auto fehlt ein Rad.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/c8c07a622c422e79b7692317.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Am Auto fehlt ein Rad.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 5,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "am auto fehlt ein rad",
+   "hyp_norm": "am auto fehlt ein rad",
+   "target": "Rad",
+   "target_idx": 4,
+   "recognized": "rad",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "am",
+     "hyp": "am"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "auto",
+     "hyp": "auto"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "fehlt",
+     "hyp": "fehlt"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "ein",
+     "hyp": "ein"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "rad",
+     "hyp": "rad"
+    }
+   ],
+   "group": "Rad|Rat"
+  },
+  {
+   "pair_id": "p05",
+   "id": "19",
+   "mode": "sentence",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Danke für deinen guten Rat.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/149129b84c9711ecfea75f74.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Danke für deinen guten Rat.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 5,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "danke für deinen guten rat",
+   "hyp_norm": "danke für deinen guten rat",
+   "target": "Rat",
+   "target_idx": 4,
+   "recognized": "rat",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "danke",
+     "hyp": "danke"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "für",
+     "hyp": "für"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "deinen",
+     "hyp": "deinen"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "guten",
+     "hyp": "guten"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "rat",
+     "hyp": "rat"
+    }
+   ],
+   "group": "Rad|Rat"
+  },
+  {
+   "pair_id": "p05",
+   "id": "20",
+   "mode": "sentence",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Kannst du mir einen Rat geben?",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/e0b4202bdab5a2b67438114f.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Kannst du mir einen Rat geben?",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "kannst du mir einen rat geben",
+   "hyp_norm": "kannst du mir einen rat geben",
+   "target": "Rat",
+   "target_idx": 4,
+   "recognized": "rat",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "kannst",
+     "hyp": "kannst"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "du",
+     "hyp": "du"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "mir",
+     "hyp": "mir"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "einen",
+     "hyp": "einen"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "rat",
+     "hyp": "rat"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "geben",
+     "hyp": "geben"
+    }
+   ],
+   "group": "Rad|Rat"
+  },
+  {
+   "pair_id": "p01",
+   "id": "1",
+   "mode": "sentence",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Wir fahren im Sommer ans Meer.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/a125c59927f8157abc36df75.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Wir fahren im Sommer ans Meer.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "wir fahren im sommer ans meer",
+   "hyp_norm": "wir fahren im sommer ans meer",
+   "target": "Meer",
+   "target_idx": 5,
+   "recognized": "meer",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "wir",
+     "hyp": "wir"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "fahren",
+     "hyp": "fahren"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "im",
+     "hyp": "im"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "sommer",
+     "hyp": "sommer"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "ans",
+     "hyp": "ans"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "meer",
+     "hyp": "meer"
+    }
+   ],
+   "group": "mehr|Meer"
+  },
+  {
+   "pair_id": "p01",
+   "id": "2",
+   "mode": "sentence",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Das Meer ist heute sehr ruhig.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/c34f82d415d391cc3604acd2.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Das Meer ist heute sehr ruhig.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "das meer ist heute sehr ruhig",
+   "hyp_norm": "das meer ist heute sehr ruhig",
+   "target": "Meer",
+   "target_idx": 1,
+   "recognized": "meer",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "das",
+     "hyp": "das"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "meer",
+     "hyp": "meer"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "ist",
+     "hyp": "ist"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "heute",
+     "hyp": "heute"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "sehr",
+     "hyp": "sehr"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "ruhig",
+     "hyp": "ruhig"
+    }
+   ],
+   "group": "mehr|Meer"
+  },
+  {
+   "pair_id": "p01",
+   "id": "3",
+   "mode": "sentence",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Ich möchte bitte mehr Wasser.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/91e753ff2c005528579bfe2b.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Ich möchte bitte mehr Wasser.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 5,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "ich möchte bitte mehr wasser",
+   "hyp_norm": "ich möchte bitte mehr wasser",
+   "target": "mehr",
+   "target_idx": 3,
+   "recognized": "mehr",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "ich",
+     "hyp": "ich"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "möchte",
+     "hyp": "möchte"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "bitte",
+     "hyp": "bitte"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "mehr",
+     "hyp": "mehr"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "wasser",
+     "hyp": "wasser"
+    }
+   ],
+   "group": "mehr|Meer"
+  },
+  {
+   "pair_id": "p01",
+   "id": "4",
+   "mode": "sentence",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Er verdient jetzt mehr als früher.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/e14167f14b09bb563c9afa46.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Er verdient jetzt mehr als früher.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "er verdient jetzt mehr als früher",
+   "hyp_norm": "er verdient jetzt mehr als früher",
+   "target": "mehr",
+   "target_idx": 3,
+   "recognized": "mehr",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "er",
+     "hyp": "er"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "verdient",
+     "hyp": "verdient"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "jetzt",
+     "hyp": "jetzt"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "mehr",
+     "hyp": "mehr"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "als",
+     "hyp": "als"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "früher",
+     "hyp": "früher"
+    }
+   ],
+   "group": "mehr|Meer"
+  },
+  {
+   "pair_id": "p02",
+   "id": "5",
+   "mode": "sentence",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Im Ozean schwimmt ein großer Wal.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/955fbf1ecd586f3a7cfb831d.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Im Ozean schwimmt ein großer Wahl.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 1,
+   "wer": 0.16666666666666666,
+   "subs": 1,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "im ozean schwimmt ein großer wal",
+   "hyp_norm": "im ozean schwimmt ein großer wahl",
+   "target": "Wal",
+   "target_idx": 5,
+   "recognized": "wahl",
+   "status": "homophone_confusion",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "im",
+     "hyp": "im"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "ozean",
+     "hyp": "ozean"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "schwimmt",
+     "hyp": "schwimmt"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "ein",
+     "hyp": "ein"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "großer",
+     "hyp": "großer"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "wal",
+     "hyp": "wahl"
+    }
+   ],
+   "group": "Wal|Wahl"
+  },
+  {
+   "pair_id": "p02",
+   "id": "6",
+   "mode": "sentence",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Der Wal frisst winzige Krebse.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/140700dc2445f7a2d261df4b.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Der Wal frisst winzige Krebse.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 5,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "der wal frisst winzige krebse",
+   "hyp_norm": "der wal frisst winzige krebse",
+   "target": "Wal",
+   "target_idx": 1,
+   "recognized": "wal",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "der",
+     "hyp": "der"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "wal",
+     "hyp": "wal"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "frisst",
+     "hyp": "frisst"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "winzige",
+     "hyp": "winzige"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "krebse",
+     "hyp": "krebse"
+    }
+   ],
+   "group": "Wal|Wahl"
+  },
+  {
+   "pair_id": "p02",
+   "id": "7",
+   "mode": "sentence",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Die Wahl ist am nächsten Sonntag.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/e87b45250a7cbb197069d5e7.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Die Wahl ist am nächsten Sonntag.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "die wahl ist am nächsten sonntag",
+   "hyp_norm": "die wahl ist am nächsten sonntag",
+   "target": "Wahl",
+   "target_idx": 1,
+   "recognized": "wahl",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "die",
+     "hyp": "die"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "wahl",
+     "hyp": "wahl"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "ist",
+     "hyp": "ist"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "am",
+     "hyp": "am"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "nächsten",
+     "hyp": "nächsten"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "sonntag",
+     "hyp": "sonntag"
+    }
+   ],
+   "group": "Wal|Wahl"
+  },
+  {
+   "pair_id": "p02",
+   "id": "8",
+   "mode": "sentence",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Wir hatten leider keine andere Wahl.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/27db4058cc8788768a11586a.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Wir hatten leider keine andere Wahl.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "wir hatten leider keine andere wahl",
+   "hyp_norm": "wir hatten leider keine andere wahl",
+   "target": "Wahl",
+   "target_idx": 5,
+   "recognized": "wahl",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "wir",
+     "hyp": "wir"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "hatten",
+     "hyp": "hatten"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "leider",
+     "hyp": "leider"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "keine",
+     "hyp": "keine"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "andere",
+     "hyp": "andere"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "wahl",
+     "hyp": "wahl"
+    }
+   ],
+   "group": "Wal|Wahl"
+  },
+  {
+   "pair_id": "p03",
+   "id": "9",
+   "mode": "sentence",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Sie singt ein schönes Lied.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/bb106553f46dc17cce96721d.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Sie singt ein schönes Lied.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 5,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "sie singt ein schönes lied",
+   "hyp_norm": "sie singt ein schönes lied",
+   "target": "Lied",
+   "target_idx": 4,
+   "recognized": "lied",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "sie",
+     "hyp": "sie"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "singt",
+     "hyp": "singt"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "ein",
+     "hyp": "ein"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "schönes",
+     "hyp": "schönes"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "lied",
+     "hyp": "lied"
+    }
+   ],
+   "group": "Lied|Lid"
+  },
+  {
+   "pair_id": "p03",
+   "id": "10",
+   "mode": "sentence",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Das Lied läuft ständig im Radio.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/41f09e6a5b2806b0bf4490ad.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Das Lied läuft ständig im Radio.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "das lied läuft ständig im radio",
+   "hyp_norm": "das lied läuft ständig im radio",
+   "target": "Lied",
+   "target_idx": 1,
+   "recognized": "lied",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "das",
+     "hyp": "das"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "lied",
+     "hyp": "lied"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "läuft",
+     "hyp": "läuft"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "ständig",
+     "hyp": "ständig"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "im",
+     "hyp": "im"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "radio",
+     "hyp": "radio"
+    }
+   ],
+   "group": "Lied|Lid"
+  },
+  {
+   "pair_id": "p03",
+   "id": "11",
+   "mode": "sentence",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Mein linkes Lid zuckt ständig.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/dbf25333ff5315466aa1aa72.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Mein linkes Lied zuckt ständig.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 5,
+   "errors": 1,
+   "wer": 0.2,
+   "subs": 1,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "mein linkes lid zuckt ständig",
+   "hyp_norm": "mein linkes lied zuckt ständig",
+   "target": "Lid",
+   "target_idx": 2,
+   "recognized": "lied",
+   "status": "homophone_confusion",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "mein",
+     "hyp": "mein"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "linkes",
+     "hyp": "linkes"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "lid",
+     "hyp": "lied"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "zuckt",
+     "hyp": "zuckt"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "ständig",
+     "hyp": "ständig"
+    }
+   ],
+   "group": "Lied|Lid"
+  },
+  {
+   "pair_id": "p03",
+   "id": "12",
+   "mode": "sentence",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Ein Insekt ist unter mein Lid geraten.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/7b3e59ade86864aa48fc85a2.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Ein Insekt ist unter mein Litt geraten.",
+   "asr_cached": false,
+   "n_ref": 7,
+   "n_hyp": 7,
+   "errors": 1,
+   "wer": 0.14285714285714285,
+   "subs": 1,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "ein insekt ist unter mein lid geraten",
+   "hyp_norm": "ein insekt ist unter mein litt geraten",
+   "target": "Lid",
+   "target_idx": 5,
+   "recognized": "litt",
+   "status": "other_substitution",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "ein",
+     "hyp": "ein"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "insekt",
+     "hyp": "insekt"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "ist",
+     "hyp": "ist"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "unter",
+     "hyp": "unter"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "mein",
+     "hyp": "mein"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "lid",
+     "hyp": "litt"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 6,
+     "hyp_idx": 6,
+     "ref": "geraten",
+     "hyp": "geraten"
+    }
+   ],
+   "group": "Lied|Lid"
+  },
+  {
+   "pair_id": "p04",
+   "id": "13",
+   "mode": "sentence",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Bitte lies die nächste Seite vor.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/c3ce49ef8683b753363506fd.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "mit der Liste die nächste Seite vor.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 7,
+   "errors": 3,
+   "wer": 0.5,
+   "subs": 2,
+   "dels": 0,
+   "ins": 1,
+   "ref_norm": "bitte lies die nächste seite vor",
+   "hyp_norm": "mit der liste die nächste seite vor",
+   "target": "Seite",
+   "target_idx": 4,
+   "recognized": "seite",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "insert",
+     "ref_idx": null,
+     "hyp_idx": 0,
+     "ref": null,
+     "hyp": "mit"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 0,
+     "hyp_idx": 1,
+     "ref": "bitte",
+     "hyp": "der"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 1,
+     "hyp_idx": 2,
+     "ref": "lies",
+     "hyp": "liste"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 3,
+     "ref": "die",
+     "hyp": "die"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 4,
+     "ref": "nächste",
+     "hyp": "nächste"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 5,
+     "ref": "seite",
+     "hyp": "seite"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 6,
+     "ref": "vor",
+     "hyp": "vor"
+    }
+   ],
+   "group": "Seite|Saite"
+  },
+  {
+   "pair_id": "p04",
+   "id": "14",
+   "mode": "sentence",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Er steht auf unserer Seite.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/9d46275fec7c8868299c2bda.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Er steht auf unserer Seite.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 5,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "er steht auf unserer seite",
+   "hyp_norm": "er steht auf unserer seite",
+   "target": "Seite",
+   "target_idx": 4,
+   "recognized": "seite",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "er",
+     "hyp": "er"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "steht",
+     "hyp": "steht"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "auf",
+     "hyp": "auf"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "unserer",
+     "hyp": "unserer"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "seite",
+     "hyp": "seite"
+    }
+   ],
+   "group": "Seite|Saite"
+  },
+  {
+   "pair_id": "p04",
+   "id": "15",
+   "mode": "sentence",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "An der Gitarre ist eine Saite gerissen.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/35d6e7bd3450c6042316af83.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "An der Gitarre ist eine Seite gerissen.",
+   "asr_cached": false,
+   "n_ref": 7,
+   "n_hyp": 7,
+   "errors": 1,
+   "wer": 0.14285714285714285,
+   "subs": 1,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "an der gitarre ist eine saite gerissen",
+   "hyp_norm": "an der gitarre ist eine seite gerissen",
+   "target": "Saite",
+   "target_idx": 5,
+   "recognized": "seite",
+   "status": "homophone_confusion",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "an",
+     "hyp": "an"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "der",
+     "hyp": "der"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "gitarre",
+     "hyp": "gitarre"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "ist",
+     "hyp": "ist"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "eine",
+     "hyp": "eine"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "saite",
+     "hyp": "seite"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 6,
+     "hyp_idx": 6,
+     "ref": "gerissen",
+     "hyp": "gerissen"
+    }
+   ],
+   "group": "Seite|Saite"
+  },
+  {
+   "pair_id": "p04",
+   "id": "16",
+   "mode": "sentence",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Die tiefe Saite klingt verstimmt.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/14b8c2462be883b59c37cf2e.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Die tiefe Seite klingt verstimmt.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 5,
+   "errors": 1,
+   "wer": 0.2,
+   "subs": 1,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "die tiefe saite klingt verstimmt",
+   "hyp_norm": "die tiefe seite klingt verstimmt",
+   "target": "Saite",
+   "target_idx": 2,
+   "recognized": "seite",
+   "status": "homophone_confusion",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "die",
+     "hyp": "die"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "tiefe",
+     "hyp": "tiefe"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "saite",
+     "hyp": "seite"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "klingt",
+     "hyp": "klingt"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "verstimmt",
+     "hyp": "verstimmt"
+    }
+   ],
+   "group": "Seite|Saite"
+  },
+  {
+   "pair_id": "p05",
+   "id": "17",
+   "mode": "sentence",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Ich fahre jeden Tag mit dem Rad.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/513d51fe7c8122b20ceb3c28.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Ich fahre jeden Tag mit dem Rad.",
+   "asr_cached": false,
+   "n_ref": 7,
+   "n_hyp": 7,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "ich fahre jeden tag mit dem rad",
+   "hyp_norm": "ich fahre jeden tag mit dem rad",
+   "target": "Rad",
+   "target_idx": 6,
+   "recognized": "rad",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "ich",
+     "hyp": "ich"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "fahre",
+     "hyp": "fahre"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "jeden",
+     "hyp": "jeden"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "tag",
+     "hyp": "tag"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "mit",
+     "hyp": "mit"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "dem",
+     "hyp": "dem"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 6,
+     "hyp_idx": 6,
+     "ref": "rad",
+     "hyp": "rad"
+    }
+   ],
+   "group": "Rad|Rat"
+  },
+  {
+   "pair_id": "p05",
+   "id": "18",
+   "mode": "sentence",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Am Auto fehlt ein Rad.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/fd36cc0b4a77e65b0bcb9019.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Am Auto fehlt ein Rad.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 5,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "am auto fehlt ein rad",
+   "hyp_norm": "am auto fehlt ein rad",
+   "target": "Rad",
+   "target_idx": 4,
+   "recognized": "rad",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "am",
+     "hyp": "am"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "auto",
+     "hyp": "auto"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "fehlt",
+     "hyp": "fehlt"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "ein",
+     "hyp": "ein"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "rad",
+     "hyp": "rad"
+    }
+   ],
+   "group": "Rad|Rat"
+  },
+  {
+   "pair_id": "p05",
+   "id": "19",
+   "mode": "sentence",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Danke für deinen guten Rat.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/ccceff2ebf9c094f7ce389ca.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Danke für deinen guten Rat!",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 5,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "danke für deinen guten rat",
+   "hyp_norm": "danke für deinen guten rat",
+   "target": "Rat",
+   "target_idx": 4,
+   "recognized": "rat",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "danke",
+     "hyp": "danke"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "für",
+     "hyp": "für"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "deinen",
+     "hyp": "deinen"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "guten",
+     "hyp": "guten"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "rat",
+     "hyp": "rat"
+    }
+   ],
+   "group": "Rad|Rat"
+  },
+  {
+   "pair_id": "p05",
+   "id": "20",
+   "mode": "sentence",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Kannst du mir einen Rat geben?",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/e227a0638f08801583338eb1.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Kannst du mir einen Rat geben?",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "kannst du mir einen rat geben",
+   "hyp_norm": "kannst du mir einen rat geben",
+   "target": "Rat",
+   "target_idx": 4,
+   "recognized": "rat",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "kannst",
+     "hyp": "kannst"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "du",
+     "hyp": "du"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "mir",
+     "hyp": "mir"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "einen",
+     "hyp": "einen"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "rat",
+     "hyp": "rat"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "geben",
+     "hyp": "geben"
+    }
+   ],
+   "group": "Rad|Rat"
+  },
+  {
+   "pair_id": "p01",
+   "id": "1",
+   "mode": "sentence",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Wir fahren im Sommer ans Meer.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/c2bb94466f312c5d9996e82e.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Wir fahren im Sommer ins Meer.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 1,
+   "wer": 0.16666666666666666,
+   "subs": 1,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "wir fahren im sommer ans meer",
+   "hyp_norm": "wir fahren im sommer ins meer",
+   "target": "Meer",
+   "target_idx": 5,
+   "recognized": "meer",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "wir",
+     "hyp": "wir"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "fahren",
+     "hyp": "fahren"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "im",
+     "hyp": "im"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "sommer",
+     "hyp": "sommer"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "ans",
+     "hyp": "ins"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "meer",
+     "hyp": "meer"
+    }
+   ],
+   "group": "mehr|Meer"
+  },
+  {
+   "pair_id": "p01",
+   "id": "2",
+   "mode": "sentence",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Das Meer ist heute sehr ruhig.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/d80a71703df5f6a3bfe2db38.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Das mir ist heute sehr ruhig.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 1,
+   "wer": 0.16666666666666666,
+   "subs": 1,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "das meer ist heute sehr ruhig",
+   "hyp_norm": "das mir ist heute sehr ruhig",
+   "target": "Meer",
+   "target_idx": 1,
+   "recognized": "mir",
+   "status": "other_substitution",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "das",
+     "hyp": "das"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "meer",
+     "hyp": "mir"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "ist",
+     "hyp": "ist"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "heute",
+     "hyp": "heute"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "sehr",
+     "hyp": "sehr"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "ruhig",
+     "hyp": "ruhig"
+    }
+   ],
+   "group": "mehr|Meer"
+  },
+  {
+   "pair_id": "p01",
+   "id": "3",
+   "mode": "sentence",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Ich möchte bitte mehr Wasser.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/c1c139a4ecfd0f7e74703a3d.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Ich möchte bitte mehr Wasser.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 5,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "ich möchte bitte mehr wasser",
+   "hyp_norm": "ich möchte bitte mehr wasser",
+   "target": "mehr",
+   "target_idx": 3,
+   "recognized": "mehr",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "ich",
+     "hyp": "ich"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "möchte",
+     "hyp": "möchte"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "bitte",
+     "hyp": "bitte"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "mehr",
+     "hyp": "mehr"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "wasser",
+     "hyp": "wasser"
+    }
+   ],
+   "group": "mehr|Meer"
+  },
+  {
+   "pair_id": "p01",
+   "id": "4",
+   "mode": "sentence",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Er verdient jetzt mehr als früher.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/244949201a9709cb04f0e8f3.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Er verdient jetzt mehr als früher.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "er verdient jetzt mehr als früher",
+   "hyp_norm": "er verdient jetzt mehr als früher",
+   "target": "mehr",
+   "target_idx": 3,
+   "recognized": "mehr",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "er",
+     "hyp": "er"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "verdient",
+     "hyp": "verdient"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "jetzt",
+     "hyp": "jetzt"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "mehr",
+     "hyp": "mehr"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "als",
+     "hyp": "als"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "früher",
+     "hyp": "früher"
+    }
+   ],
+   "group": "mehr|Meer"
+  },
+  {
+   "pair_id": "p02",
+   "id": "5",
+   "mode": "sentence",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Im Ozean schwimmt ein großer Wal.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/4a816f38efe213a2f8e8de92.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Im Ozean schwimmt ein großer Wall.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 1,
+   "wer": 0.16666666666666666,
+   "subs": 1,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "im ozean schwimmt ein großer wal",
+   "hyp_norm": "im ozean schwimmt ein großer wall",
+   "target": "Wal",
+   "target_idx": 5,
+   "recognized": "wall",
+   "status": "other_substitution",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "im",
+     "hyp": "im"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "ozean",
+     "hyp": "ozean"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "schwimmt",
+     "hyp": "schwimmt"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "ein",
+     "hyp": "ein"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "großer",
+     "hyp": "großer"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "wal",
+     "hyp": "wall"
+    }
+   ],
+   "group": "Wal|Wahl"
+  },
+  {
+   "pair_id": "p02",
+   "id": "6",
+   "mode": "sentence",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Der Wal frisst winzige Krebse.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/9c722b8891058a52be15ef25.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Der Wald frisst minzige Krebse.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 5,
+   "errors": 2,
+   "wer": 0.4,
+   "subs": 2,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "der wal frisst winzige krebse",
+   "hyp_norm": "der wald frisst minzige krebse",
+   "target": "Wal",
+   "target_idx": 1,
+   "recognized": "wald",
+   "status": "other_substitution",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "der",
+     "hyp": "der"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "wal",
+     "hyp": "wald"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "frisst",
+     "hyp": "frisst"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "winzige",
+     "hyp": "minzige"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "krebse",
+     "hyp": "krebse"
+    }
+   ],
+   "group": "Wal|Wahl"
+  },
+  {
+   "pair_id": "p02",
+   "id": "7",
+   "mode": "sentence",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Die Wahl ist am nächsten Sonntag.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/9c67d9ba79abba9c0d101a7d.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Die Wahl ist am nächsten Sonntag.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "die wahl ist am nächsten sonntag",
+   "hyp_norm": "die wahl ist am nächsten sonntag",
+   "target": "Wahl",
+   "target_idx": 1,
+   "recognized": "wahl",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "die",
+     "hyp": "die"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "wahl",
+     "hyp": "wahl"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "ist",
+     "hyp": "ist"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "am",
+     "hyp": "am"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "nächsten",
+     "hyp": "nächsten"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "sonntag",
+     "hyp": "sonntag"
+    }
+   ],
+   "group": "Wal|Wahl"
+  },
+  {
+   "pair_id": "p02",
+   "id": "8",
+   "mode": "sentence",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Wir hatten leider keine andere Wahl.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/31eeddebe6941da35721ec0e.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Wir hatten leider keine andere Wahl.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "wir hatten leider keine andere wahl",
+   "hyp_norm": "wir hatten leider keine andere wahl",
+   "target": "Wahl",
+   "target_idx": 5,
+   "recognized": "wahl",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "wir",
+     "hyp": "wir"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "hatten",
+     "hyp": "hatten"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "leider",
+     "hyp": "leider"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "keine",
+     "hyp": "keine"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "andere",
+     "hyp": "andere"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "wahl",
+     "hyp": "wahl"
+    }
+   ],
+   "group": "Wal|Wahl"
+  },
+  {
+   "pair_id": "p03",
+   "id": "9",
+   "mode": "sentence",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Sie singt ein schönes Lied.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/2dffc5ec537ff97674012366.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Sie sinkt ein schönes Lied.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 5,
+   "errors": 1,
+   "wer": 0.2,
+   "subs": 1,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "sie singt ein schönes lied",
+   "hyp_norm": "sie sinkt ein schönes lied",
+   "target": "Lied",
+   "target_idx": 4,
+   "recognized": "lied",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "sie",
+     "hyp": "sie"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "singt",
+     "hyp": "sinkt"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "ein",
+     "hyp": "ein"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "schönes",
+     "hyp": "schönes"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "lied",
+     "hyp": "lied"
+    }
+   ],
+   "group": "Lied|Lid"
+  },
+  {
+   "pair_id": "p03",
+   "id": "10",
+   "mode": "sentence",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Das Lied läuft ständig im Radio.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/623f096665c2ba2bb9fcfc40.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "das nicht löscht ständig im Radio.",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 2,
+   "wer": 0.3333333333333333,
+   "subs": 2,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "das lied läuft ständig im radio",
+   "hyp_norm": "das nicht löscht ständig im radio",
+   "target": "Lied",
+   "target_idx": 1,
+   "recognized": "nicht",
+   "status": "other_substitution",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "das",
+     "hyp": "das"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "lied",
+     "hyp": "nicht"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "läuft",
+     "hyp": "löscht"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "ständig",
+     "hyp": "ständig"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "im",
+     "hyp": "im"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "radio",
+     "hyp": "radio"
+    }
+   ],
+   "group": "Lied|Lid"
+  },
+  {
+   "pair_id": "p03",
+   "id": "11",
+   "mode": "sentence",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Mein linkes Lid zuckt ständig.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/93b281634277202ae0153ce1.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Man je gesteht zuständig.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 4,
+   "errors": 5,
+   "wer": 1.0,
+   "subs": 4,
+   "dels": 1,
+   "ins": 0,
+   "ref_norm": "mein linkes lid zuckt ständig",
+   "hyp_norm": "man je gesteht zuständig",
+   "target": "Lid",
+   "target_idx": 2,
+   "recognized": "gesteht",
+   "status": "other_substitution",
+   "ops": [
+    {
+     "op": "substitute",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "mein",
+     "hyp": "man"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "linkes",
+     "hyp": "je"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "lid",
+     "hyp": "gesteht"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "zuckt",
+     "hyp": "zuständig"
+    },
+    {
+     "op": "delete",
+     "ref_idx": 4,
+     "hyp_idx": null,
+     "ref": "ständig",
+     "hyp": null
+    }
+   ],
+   "group": "Lied|Lid"
+  },
+  {
+   "pair_id": "p03",
+   "id": "12",
+   "mode": "sentence",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Ein Insekt ist unter mein Lid geraten.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/050618ba9c908e44527a4d9a.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Ein Insekt ist unter mein Lied geraten.",
+   "asr_cached": false,
+   "n_ref": 7,
+   "n_hyp": 7,
+   "errors": 1,
+   "wer": 0.14285714285714285,
+   "subs": 1,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "ein insekt ist unter mein lid geraten",
+   "hyp_norm": "ein insekt ist unter mein lied geraten",
+   "target": "Lid",
+   "target_idx": 5,
+   "recognized": "lied",
+   "status": "homophone_confusion",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "ein",
+     "hyp": "ein"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "insekt",
+     "hyp": "insekt"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "ist",
+     "hyp": "ist"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "unter",
+     "hyp": "unter"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "mein",
+     "hyp": "mein"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "lid",
+     "hyp": "lied"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 6,
+     "hyp_idx": 6,
+     "ref": "geraten",
+     "hyp": "geraten"
+    }
+   ],
+   "group": "Lied|Lid"
+  },
+  {
+   "pair_id": "p04",
+   "id": "13",
+   "mode": "sentence",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Bitte lies die nächste Seite vor.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/ce6af3d9d9c19f0762e53947.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Fittest du die nächste Seite vor?",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 2,
+   "wer": 0.3333333333333333,
+   "subs": 2,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "bitte lies die nächste seite vor",
+   "hyp_norm": "fittest du die nächste seite vor",
+   "target": "Seite",
+   "target_idx": 4,
+   "recognized": "seite",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "substitute",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "bitte",
+     "hyp": "fittest"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "lies",
+     "hyp": "du"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "die",
+     "hyp": "die"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "nächste",
+     "hyp": "nächste"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "seite",
+     "hyp": "seite"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "vor",
+     "hyp": "vor"
+    }
+   ],
+   "group": "Seite|Saite"
+  },
+  {
+   "pair_id": "p04",
+   "id": "14",
+   "mode": "sentence",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Er steht auf unserer Seite.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/b3fe4ed701a6635d7f9dbcf8.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Er steht auf unserer Seite.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 5,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "er steht auf unserer seite",
+   "hyp_norm": "er steht auf unserer seite",
+   "target": "Seite",
+   "target_idx": 4,
+   "recognized": "seite",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "er",
+     "hyp": "er"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "steht",
+     "hyp": "steht"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "auf",
+     "hyp": "auf"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "unserer",
+     "hyp": "unserer"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "seite",
+     "hyp": "seite"
+    }
+   ],
+   "group": "Seite|Saite"
+  },
+  {
+   "pair_id": "p04",
+   "id": "15",
+   "mode": "sentence",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "An der Gitarre ist eine Saite gerissen.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/0624f02e5d32618a0317168d.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "und der Gitarre ist an den Seite gerissen.",
+   "asr_cached": false,
+   "n_ref": 7,
+   "n_hyp": 8,
+   "errors": 4,
+   "wer": 0.5714285714285714,
+   "subs": 3,
+   "dels": 0,
+   "ins": 1,
+   "ref_norm": "an der gitarre ist eine saite gerissen",
+   "hyp_norm": "und der gitarre ist an den seite gerissen",
+   "target": "Saite",
+   "target_idx": 5,
+   "recognized": "seite",
+   "status": "homophone_confusion",
+   "ops": [
+    {
+     "op": "substitute",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "an",
+     "hyp": "und"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "der",
+     "hyp": "der"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "gitarre",
+     "hyp": "gitarre"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "ist",
+     "hyp": "ist"
+    },
+    {
+     "op": "insert",
+     "ref_idx": null,
+     "hyp_idx": 4,
+     "ref": null,
+     "hyp": "an"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 4,
+     "hyp_idx": 5,
+     "ref": "eine",
+     "hyp": "den"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 5,
+     "hyp_idx": 6,
+     "ref": "saite",
+     "hyp": "seite"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 6,
+     "hyp_idx": 7,
+     "ref": "gerissen",
+     "hyp": "gerissen"
+    }
+   ],
+   "group": "Seite|Saite"
+  },
+  {
+   "pair_id": "p04",
+   "id": "16",
+   "mode": "sentence",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Die tiefe Saite klingt verstimmt.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/6695ed492b170c3822e6e080.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Die tiefe Seite klingt verstimmt.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 5,
+   "errors": 1,
+   "wer": 0.2,
+   "subs": 1,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "die tiefe saite klingt verstimmt",
+   "hyp_norm": "die tiefe seite klingt verstimmt",
+   "target": "Saite",
+   "target_idx": 2,
+   "recognized": "seite",
+   "status": "homophone_confusion",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "die",
+     "hyp": "die"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "tiefe",
+     "hyp": "tiefe"
+    },
+    {
+     "op": "substitute",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "saite",
+     "hyp": "seite"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "klingt",
+     "hyp": "klingt"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "verstimmt",
+     "hyp": "verstimmt"
+    }
+   ],
+   "group": "Seite|Saite"
+  },
+  {
+   "pair_id": "p05",
+   "id": "17",
+   "mode": "sentence",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Ich fahre jeden Tag mit dem Rad.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/e2dca1070d08ef948d0872d3.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Ich fahre jeden Tag mit dem Rad.",
+   "asr_cached": false,
+   "n_ref": 7,
+   "n_hyp": 7,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "ich fahre jeden tag mit dem rad",
+   "hyp_norm": "ich fahre jeden tag mit dem rad",
+   "target": "Rad",
+   "target_idx": 6,
+   "recognized": "rad",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "ich",
+     "hyp": "ich"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "fahre",
+     "hyp": "fahre"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "jeden",
+     "hyp": "jeden"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "tag",
+     "hyp": "tag"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "mit",
+     "hyp": "mit"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "dem",
+     "hyp": "dem"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 6,
+     "hyp_idx": 6,
+     "ref": "rad",
+     "hyp": "rad"
+    }
+   ],
+   "group": "Rad|Rat"
+  },
+  {
+   "pair_id": "p05",
+   "id": "18",
+   "mode": "sentence",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Am Auto fehlt ein Rad.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/ad64e17ef4b4c91e34df3e67.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Um Auto fehlt ein Rad.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 5,
+   "errors": 1,
+   "wer": 0.2,
+   "subs": 1,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "am auto fehlt ein rad",
+   "hyp_norm": "um auto fehlt ein rad",
+   "target": "Rad",
+   "target_idx": 4,
+   "recognized": "rad",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "substitute",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "am",
+     "hyp": "um"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "auto",
+     "hyp": "auto"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "fehlt",
+     "hyp": "fehlt"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "ein",
+     "hyp": "ein"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "rad",
+     "hyp": "rad"
+    }
+   ],
+   "group": "Rad|Rat"
+  },
+  {
+   "pair_id": "p05",
+   "id": "19",
+   "mode": "sentence",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Danke für deinen guten Rat.",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/164e63287420ecc8b9b6cba5.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Danke für deinen guten Rat, Mildes.",
+   "asr_cached": false,
+   "n_ref": 5,
+   "n_hyp": 6,
+   "errors": 1,
+   "wer": 0.2,
+   "subs": 0,
+   "dels": 0,
+   "ins": 1,
+   "ref_norm": "danke für deinen guten rat",
+   "hyp_norm": "danke für deinen guten rat mildes",
+   "target": "Rat",
+   "target_idx": 4,
+   "recognized": "rat",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "danke",
+     "hyp": "danke"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "für",
+     "hyp": "für"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "deinen",
+     "hyp": "deinen"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "guten",
+     "hyp": "guten"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "rat",
+     "hyp": "rat"
+    },
+    {
+     "op": "insert",
+     "ref_idx": null,
+     "hyp_idx": 5,
+     "ref": null,
+     "hyp": "mildes"
+    }
+   ],
+   "group": "Rad|Rat"
+  },
+  {
+   "pair_id": "p05",
+   "id": "20",
+   "mode": "sentence",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Kannst du mir einen Rat geben?",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/556301bafbcbfcdec6801838.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Kannst du mir einen Rat geben?",
+   "asr_cached": false,
+   "n_ref": 6,
+   "n_hyp": 6,
+   "errors": 0,
+   "wer": 0.0,
+   "subs": 0,
+   "dels": 0,
+   "ins": 0,
+   "ref_norm": "kannst du mir einen rat geben",
+   "hyp_norm": "kannst du mir einen rat geben",
+   "target": "Rat",
+   "target_idx": 4,
+   "recognized": "rat",
+   "status": "correct",
+   "ops": [
+    {
+     "op": "equal",
+     "ref_idx": 0,
+     "hyp_idx": 0,
+     "ref": "kannst",
+     "hyp": "kannst"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 1,
+     "hyp_idx": 1,
+     "ref": "du",
+     "hyp": "du"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 2,
+     "hyp_idx": 2,
+     "ref": "mir",
+     "hyp": "mir"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 3,
+     "hyp_idx": 3,
+     "ref": "einen",
+     "hyp": "einen"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 4,
+     "hyp_idx": 4,
+     "ref": "rat",
+     "hyp": "rat"
+    },
+    {
+     "op": "equal",
+     "ref_idx": 5,
+     "hyp_idx": 5,
+     "ref": "geben",
+     "hyp": "geben"
+    }
+   ],
+   "group": "Rad|Rat"
+  }
+ ],
+ "words": [
+  {
+   "pair_id": "p01",
+   "id": null,
+   "mode": "word",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "mehr",
+   "group": "mehr|Meer",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/4aae0c1c54700e7c96130bcf.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "mehr.",
+   "asr_cached": false,
+   "target": "mehr",
+   "hyp_norm": "mehr",
+   "status": "exact",
+   "accepted": true
+  },
+  {
+   "pair_id": "p01",
+   "id": null,
+   "mode": "word",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Meer",
+   "group": "mehr|Meer",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/36be8cc9f2352d9b2d57f1db.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Vor blink, kennt Arbeit, kennt Arbeit, Punktung, kennt Arbeit.",
+   "asr_cached": false,
+   "target": "Meer",
+   "hyp_norm": "vor blink kennt arbeit kennt arbeit punktung kennt arbeit",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p02",
+   "id": null,
+   "mode": "word",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Wal",
+   "group": "Wal|Wahl",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/43a3dafec3f5286d4c8815eb.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Ball.",
+   "asr_cached": false,
+   "target": "Wal",
+   "hyp_norm": "ball",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p02",
+   "id": null,
+   "mode": "word",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Wahl",
+   "group": "Wal|Wahl",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/3d79ec809ee91b11f60d012a.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Bye.",
+   "asr_cached": false,
+   "target": "Wahl",
+   "hyp_norm": "bye",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p03",
+   "id": null,
+   "mode": "word",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Lied",
+   "group": "Lied|Lid",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/1a936f43a7719ac916416b96.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Lead.",
+   "asr_cached": false,
+   "target": "Lied",
+   "hyp_norm": "lead",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p03",
+   "id": null,
+   "mode": "word",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Lid",
+   "group": "Lied|Lid",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/3bf793c67d5c4336d4120664.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "lit",
+   "asr_cached": false,
+   "target": "Lid",
+   "hyp_norm": "lit",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p04",
+   "id": null,
+   "mode": "word",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Seite",
+   "group": "Seite|Saite",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/e2c71a12f37f38ec8258076d.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Saito",
+   "asr_cached": false,
+   "target": "Seite",
+   "hyp_norm": "saito",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p04",
+   "id": null,
+   "mode": "word",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Saite",
+   "group": "Seite|Saite",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/1ea7dc2f31e132658f86be02.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Ka. Zatö.",
+   "asr_cached": false,
+   "target": "Saite",
+   "hyp_norm": "ka zatö",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p05",
+   "id": null,
+   "mode": "word",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Rad",
+   "group": "Rad|Rat",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/aed74c4f3921a7e1ff5fa5ac.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Gott.",
+   "asr_cached": false,
+   "target": "Rad",
+   "hyp_norm": "gott",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p05",
+   "id": null,
+   "mode": "word",
+   "accent": "de",
+   "cfg_weight": 0.5,
+   "sentence": "Rat",
+   "group": "Rad|Rat",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/7a9d0d73c40448c4024877eb.wav",
+   "ref_path": "/home/user/homophone_asr/refs/de/cv17_common_voice_de_20272292.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Gott.",
+   "asr_cached": true,
+   "target": "Rat",
+   "hyp_norm": "gott",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p01",
+   "id": null,
+   "mode": "word",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "mehr",
+   "group": "mehr|Meer",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/a060eafb2ca124be3c035458.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Mia.",
+   "asr_cached": false,
+   "target": "mehr",
+   "hyp_norm": "mia",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p01",
+   "id": null,
+   "mode": "word",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Meer",
+   "group": "mehr|Meer",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/5e042868cd48f1305ccd2182.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Mia? Mia?",
+   "asr_cached": false,
+   "target": "Meer",
+   "hyp_norm": "mia mia",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p02",
+   "id": null,
+   "mode": "word",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Wal",
+   "group": "Wal|Wahl",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/9df7f2ab37d1ccf27c7f51b3.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Ball.",
+   "asr_cached": false,
+   "target": "Wal",
+   "hyp_norm": "ball",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p02",
+   "id": null,
+   "mode": "word",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Wahl",
+   "group": "Wal|Wahl",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/0dd0837048012522de89668f.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Bye!",
+   "asr_cached": false,
+   "target": "Wahl",
+   "hyp_norm": "bye",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p03",
+   "id": null,
+   "mode": "word",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Lied",
+   "group": "Lied|Lid",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/340cd462a5130b23adec6c2c.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Lead.",
+   "asr_cached": false,
+   "target": "Lied",
+   "hyp_norm": "lead",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p03",
+   "id": null,
+   "mode": "word",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Lid",
+   "group": "Lied|Lid",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/2b05b89b705c6c55f4c939c7.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Lead",
+   "asr_cached": false,
+   "target": "Lid",
+   "hyp_norm": "lead",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p04",
+   "id": null,
+   "mode": "word",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Seite",
+   "group": "Seite|Saite",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/1ee323a42cc3521852e4b694.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Seite, Seite.",
+   "asr_cached": false,
+   "target": "Seite",
+   "hyp_norm": "seite seite",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p04",
+   "id": null,
+   "mode": "word",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Saite",
+   "group": "Seite|Saite",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/c03962a2bbd806480eba13a3.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "SETTA",
+   "asr_cached": false,
+   "target": "Saite",
+   "hyp_norm": "setta",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p05",
+   "id": null,
+   "mode": "word",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Rad",
+   "group": "Rad|Rat",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/dfbc007ef9220d0f9a51a8d0.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Rat und Schuhen.",
+   "asr_cached": false,
+   "target": "Rad",
+   "hyp_norm": "rat und schuhen",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p05",
+   "id": null,
+   "mode": "word",
+   "accent": "tr",
+   "cfg_weight": 0.5,
+   "sentence": "Rat",
+   "group": "Rad|Rat",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/3339435ba9cde8465513943c.wav",
+   "ref_path": "/home/user/homophone_asr/refs/tr/cv17_common_voice_tr_18967997.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Rath?",
+   "asr_cached": false,
+   "target": "Rat",
+   "hyp_norm": "rath",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p01",
+   "id": null,
+   "mode": "word",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "mehr",
+   "group": "mehr|Meer",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/4dedfd1738c36e4208e5237b.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "mehr, mehr, mehr, mehr, mehr, mehr, mehr, mehr, mehr, mehr, mehr, mehr, mehr, mehr, mehr, mehr, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more, more",
+   "asr_cached": false,
+   "target": "mehr",
+   "hyp_norm": "mehr mehr mehr mehr mehr mehr mehr mehr mehr mehr mehr mehr mehr mehr mehr mehr more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more more",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p01",
+   "id": null,
+   "mode": "word",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Meer",
+   "group": "mehr|Meer",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/5415be31a5d4508562cb03e7.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Mäh, mäh, mäh.",
+   "asr_cached": false,
+   "target": "Meer",
+   "hyp_norm": "mäh mäh mäh",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p02",
+   "id": null,
+   "mode": "word",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Wal",
+   "group": "Wal|Wahl",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/c442bcff1713cdeb59163182.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Paul.",
+   "asr_cached": false,
+   "target": "Wal",
+   "hyp_norm": "paul",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p02",
+   "id": null,
+   "mode": "word",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Wahl",
+   "group": "Wal|Wahl",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/eb9a25d136733d543f7e205c.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Boah.",
+   "asr_cached": false,
+   "target": "Wahl",
+   "hyp_norm": "boah",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p03",
+   "id": null,
+   "mode": "word",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Lied",
+   "group": "Lied|Lid",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/5ef8e50632be478d3a136605.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "NEED",
+   "asr_cached": false,
+   "target": "Lied",
+   "hyp_norm": "need",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p03",
+   "id": null,
+   "mode": "word",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Lid",
+   "group": "Lied|Lid",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/2b5dbe7069fe431d6a6eb7fb.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "LEAD",
+   "asr_cached": false,
+   "target": "Lid",
+   "hyp_norm": "lead",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p04",
+   "id": null,
+   "mode": "word",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Seite",
+   "group": "Seite|Saite",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/ed87dea800cdde34938e3062.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Seite, Seite.",
+   "asr_cached": false,
+   "target": "Seite",
+   "hyp_norm": "seite seite",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p04",
+   "id": null,
+   "mode": "word",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Saite",
+   "group": "Seite|Saite",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/0c66e4719027a9f9fc91b22b.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Seite Pote, Pote, fau, mi, mi, na.",
+   "asr_cached": false,
+   "target": "Saite",
+   "hyp_norm": "seite pote pote fau mi mi na",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p05",
+   "id": null,
+   "mode": "word",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Rad",
+   "group": "Rad|Rat",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/9781ea826e44fb04a031ebb5.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Das war's.",
+   "asr_cached": false,
+   "target": "Rad",
+   "hyp_norm": "das war s",
+   "status": "other_substitution",
+   "accepted": false
+  },
+  {
+   "pair_id": "p05",
+   "id": null,
+   "mode": "word",
+   "accent": "ru",
+   "cfg_weight": 0.5,
+   "sentence": "Rat",
+   "group": "Rad|Rat",
+   "audio_path": "/home/user/homophone_asr/.cache/homophone_asr/audio/266c384094c249e5e390ae7a.wav",
+   "ref_path": "/home/user/homophone_asr/refs/ru/cv17_common_voice_ru_18988621.wav",
+   "ref_used": true,
+   "warning": null,
+   "tts_cached": false,
+   "hyp": "Was?",
+   "asr_cached": false,
+   "target": "Rat",
+   "hyp_norm": "was",
+   "status": "other_substitution",
+   "accepted": false
+  }
+ ]
+}

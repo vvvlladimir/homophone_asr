@@ -1,0 +1,4 @@
+accent,cfg_weight,n,accepted_rate,within_group_rate,exact_rate
+de,0.5,10,0.1,0.0,0.1
+ru,0.5,10,0.0,0.0,0.0
+tr,0.5,10,0.0,0.0,0.0
