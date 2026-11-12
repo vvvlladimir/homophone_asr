@@ -7,3 +7,5 @@ results/runs/
 *.egg-info/
 .gradio/
 flagged/
+results/*mock*/
+results/last_ui_run/
