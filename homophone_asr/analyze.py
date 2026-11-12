@@ -121,6 +121,8 @@ def diff_spans(ops: list[dict] | list[Op], target_idx: int | None = None, status
         is_t = target_idx is not None and o["ref_idx"] == target_idx
         if o["op"] == "equal":
             out.append((o["hyp"], "target ok" if is_t else None))
+            out.append((" ", None))
+            continue
         elif o["op"] == "substitute":
             lab = "homophone" if is_t and status == HOMOPHONE else "sub"
             out.append((f"{o['ref']}→{o['hyp']}", lab))
@@ -130,7 +132,8 @@ def diff_spans(ops: list[dict] | list[Op], target_idx: int | None = None, status
             # deleted target + adjacent partner insertion (see classify_target)
             hom = status == HOMOPHONE and o["hyp"] == recognized
             out.append((f"[+{o['hyp']}]", "homophone" if hom else "ins"))
-    return out
+        out.append((" ", None))
+    return out[:-1] if out else out
 
 
 def aggregate(rows: list[dict], by: tuple[str, ...] = ("accent", "cfg_weight")):

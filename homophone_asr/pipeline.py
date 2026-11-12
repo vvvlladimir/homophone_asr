@@ -78,11 +78,21 @@ class Pipeline:
                      group: str | None = None, meta: dict | None = None) -> dict:
         syn = self.synthesize(sentence, accent, cfg_weight)
         asr = self.transcribe(syn["audio_path"])
+        if not target:  # known dataset sentence -> its target; else every lexicon word is a candidate
+            known = next((r for r in self.sentences if analyze.normalize(r["sentence"]) == analyze.normalize(sentence)), None)
+            if known:
+                target, group = known["target"], known["group"]
         targets = [target] if target else [w for w in analyze.tokens(sentence) if w in self.lexicon]
         row = {**(meta or {}), "mode": "sentence", "accent": accent, "cfg_weight": float(cfg_weight),
                "sentence": sentence, **syn, **asr}
         if targets:
-            a = analyze.analyze_sentence(sentence, asr["hyp"], targets[0], self._group(targets[0], group))
+            rank = {analyze.HOMOPHONE: 0, analyze.OTHER: 1, analyze.DELETED: 2, analyze.CORRECT: 3}
+            cands = []
+            for k, t in enumerate(targets):
+                occ = targets[:k].count(t)
+                cands.append(analyze.analyze_sentence(sentence, asr["hyp"], t, self._group(t, group), occ))
+            a = min(cands, key=lambda c: rank.get(c["status"], 9))   # report the most severe homophone
+            targets = [a["target"]]
         else:  # free text with no known homophone: plain WER
             ops, counts = analyze.align(sentence, asr["hyp"])
             a = {**counts, "ref_norm": analyze.normalize(sentence), "hyp_norm": analyze.normalize(asr["hyp"]),

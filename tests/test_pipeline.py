@@ -105,3 +105,10 @@ def test_bad_backend_rejected(cfg):
     cfg["backends"]["tts"] = "mok"
     with pytest.raises(ValueError):
         validate(cfg)
+
+
+def test_dataset_sentence_uses_declared_target(pipe):
+    r = pipe.run_sentence("Das Meer ist heute sehr ruhig.", "de", 0.0)
+    assert r["target"] == "Meer" and r["group"] == "mehr|Meer"
+    free = pipe.run_sentence("Das Lied und das Meer.", "de", 0.0)
+    assert free["target"] in ("das", "Lied", "Meer")

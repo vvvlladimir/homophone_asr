@@ -114,8 +114,9 @@ def build_app(pipe: Pipeline) -> gr.Blocks:
         else:
             verdict = STATUS_TEXT.get(r["status"], r["status"])
             if r["status"] == analyze.HOMOPHONE:
-                verdict += (f": said **{r['target']}** ({gloss.get(r['target'].lower(), '')}), "
-                            f"ASR wrote **{r['recognized']}** ({gloss.get(r['recognized'], '')})")
+                g = lambda w: f" ({gloss[w.lower()]})" if w and w.lower() in gloss else ""  # noqa: E731
+                verdict += (f": said **{r['target']}**{g(r['target'])}, "
+                            f"ASR wrote **{r['recognized']}**{g(r['recognized'])}")
         verdict += f"  \nWER = {r['wer']:.0%} ({r['errors']} errors / {r['n_ref']} words)"
         spans = analyze.diff_spans(r["ops"], r["target_idx"], r["status"], r["recognized"])
         det = pipe.detector
@@ -224,7 +225,7 @@ def build_app(pipe: Pipeline) -> gr.Blocks:
                         "≈ 20 min). Cached clips are instant.")
             e_btn = gr.Button("Run experiment", variant="primary")
             e_info = gr.Markdown()
-            e_plot = gr.Plot(label="Heatmaps (accent × strength)")
+            e_plot = gr.Plot(label="Heatmaps (accent × strength)", show_label=False)
             e_sum = gr.Dataframe(label="Sentence summary (context test)", interactive=False)
             e_dir = gr.Markdown()
             e_wsum = gr.Dataframe(label="Isolated-word summary", interactive=False)
